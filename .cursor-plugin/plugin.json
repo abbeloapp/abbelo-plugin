@@ -1,0 +1,35 @@
+{
+  "name": "abbelo",
+  "version": "0.1.0",
+  "description": "Connect to your personal work in Abbelo. Find Guides, continue conversations, and practice skills and habits. Limited integration preview.",
+  "author": {
+    "name": "Abbelo",
+    "email": "support@abbelo.com"
+  },
+  "homepage": "https://abbelo.com/developers/mcp",
+  "license": "MIT",
+  "keywords": [
+    "abbelo",
+    "guides",
+    "learning",
+    "skills",
+    "habits",
+    "goals"
+  ],
+  "logo": "assets/abbelo.png",
+  "variables": {
+    "type": "object",
+    "properties": {
+      "ABBELO_CLIENT_ID": {
+        "type": "string",
+        "title": "Abbelo OAuth client ID",
+        "description": "Public PKCE client ID registered by Abbelo for this host and its exact callback URLs. Preview access requires setup with Abbelo.",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "ABBELO_CLIENT_ID"
+    ]
+  },
+  "repository": "https://github.com/abbeloapp/abbelo-plugin"
+}

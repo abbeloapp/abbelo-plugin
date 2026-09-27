@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "abbelo": {
+      "url": "https://abbelo.com/mcp",
+      "auth": {
+        "CLIENT_ID": "${ABBELO_CLIENT_ID}",
+        "scopes": ["abbelo:read", "abbelo:write"]
+      }
+    }
+  }
+}
