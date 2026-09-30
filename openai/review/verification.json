@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-30",
+  "status": "local candidate validated; blocked before portal draft and host testing",
+  "pluginBase": "dfc1efe5dda857e6e62cba0eb4dc3bcce8f26d9e",
+  "appBase": "4f3e6b1800396ad279ee8f5454ab5bb2726dd617",
+  "zipSha256": "c3a0b1c9398d22273980bf31f937400a3d487dae66d0a2e9ad77738c85364418",
+  "passed": [
+    "Agent Plugins 1.0.0 manifest and MCP schemas",
+    "OpenAI listing/case/icon/package checks",
+    "Plugin Creator validator on derived compatibility manifest",
+    "Skill Creator frontmatter validator",
+    "Deterministic duplicate ZIP and archive integrity",
+    "Existing Cursor/Grok manifest, MCP config, skill and logo byte preservation",
+    "npm run check:mcp (8 scripts, synthetic auth/provider/storage)",
+    "npm run build (163 stages including SQL fixtures, lint, TypeScript and Next production build)",
+    "Submission-readiness command refuses incomplete candidate",
+    "Public discovery and policy URL reachability"
+  ],
+  "notRun": [
+    "Actual ChatGPT or dot installation and OAuth sign-in",
+    "Provider-issued OpenAI client tokens and refresh",
+    "Live session credit usage and exact retry accounting",
+    "Real Home conversation continuity through ChatGPT/dot",
+    "Live grant revocation and account/Guide negative checks",
+    "Five positive and three negative review cases in host",
+    "Cursor/Grok actual-client regression",
+    "Recorded demo",
+    "OpenAI portal metadata/skill/tool scans",
+    "Native PostgreSQL migration rehearsal (initdb not available on PATH; no SQL migration was changed)"
+  ],
+  "portal": "Abbelo organization has no verified developer identity; upload is blocked before draft creation.",
+  "productionChanges": false,
+  "oauthClientsCreated": false,
+  "paidTestsPerformed": false,
+  "submittedForReview": false,
+  "published": false,
+  "limitations": [
+    "Local provider/database fixtures are not real host acceptance.",
+    "The app build has 36 existing ESLint baseline violations; no increase.",
+    "Root plugin documentation already labels Grok end-to-end behavior unverified.",
+    "Publisher/country/availability/commerce/policy confirmation is pending.",
+    "The exact OpenAI callback must be copied after developer verification; no guessed URL is registered."
+  ]
+}
