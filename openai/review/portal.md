@@ -2,7 +2,7 @@
 
 Source: [OpenAI's submission guide](https://developers.openai.com/plugins/deploy/submission), checked September 30, 2026. The owner completed Business verification. Version 0.1.0 was uploaded as a private draft under **Business — Abbelo**. Metadata reports **No Issues** and the workflow skill reports **Checks passed**. No review submission or publication was performed.
 
-The current blocker is domain verification. The exact challenge file is prepared in app PR #992 and needs production deployment approval. The callback and OAuth client remain unconfigured. The review form defaults to All supported countries; this has not been confirmed or saved as an owner declaration.
+With owner approval, app PR #992 was merged and deployed as production commit `94c0796ab3883c206d6afe6980fa04e54ae6152f`. The exact challenge returned HTTP 200 and matched; the OpenAI portal now shows **Domain verified**, including after reload. The remaining connection drawer says **Authorization unavailable**, disables the OAuth selector, and does not expose a callback or client fields. A requested MCP rescan failed before tool discovery. The callback and OAuth client remain unconfigured; no credentials were created. The review form defaults to All supported countries; this has not been confirmed or saved as an owner declaration.
 
 ## Preparation and draft setup
 

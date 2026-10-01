@@ -21,6 +21,10 @@ Abbelo’s live issuer does not advertise `authorization_response_iss_parameter_
 
 A stable callback would additionally require correct `iss` on successful and failed responses and exact discovery issuer matching. Do not advertise support solely to obtain a preferred URL. CIMD URLs are also flow-dependent; this candidate intentionally stays with operator registration.
 
+## Observed portal blocker
+
+After the owner-approved production deployment and successful domain verification, the connection drawer still reports **Authorization unavailable**. Its OAuth selector is disabled; Connect exposes neither an authorization flow nor callback/client fields. A requested rescan failed before tool discovery. OpenAI documents predefined clients, but this portal route has not exposed their configuration. The cause is not proven. Do not substitute a guessed callback, place credentials in the package, or enable DCR/CIMD to work around this. Resolve the supported configuration path before proposing the exact client registration.
+
 ## Proposed registration, not performed
 
 Use a dedicated OpenAI OAuth application, isolated from Cursor/Grok clients, with authorization code, PKCE S256, resource-bound tokens and refresh support. Start with the existing public-client approach (`token_endpoint_auth_method: none`) only if the actual dashboard supports that predefined-client configuration. If the portal requires a secret or a different client profile, stop and present that concrete change for approval; do not create a credential or weaken Abbelo's PKCE requirement.

@@ -1,6 +1,6 @@
 {
   "date": "2026-09-30",
-  "status": "Private OpenAI draft uploaded; blocked before production domain verification and live host testing",
+  "status": "Production deployed and OpenAI domain verified; OAuth authorization unavailable in portal; live host testing and review incomplete",
   "pluginBase": "dfc1efe5dda857e6e62cba0eb4dc3bcce8f26d9e",
   "appBase": "4f3e6b1800396ad279ee8f5454ab5bb2726dd617",
   "zipSha256": "c3a0b1c9398d22273980bf31f937400a3d487dae66d0a2e9ad77738c85364418",
@@ -17,7 +17,11 @@
     "Public discovery and policy URL reachability",
     "OpenAI Business identity verification completed by owner; Business \u2014 Abbelo selected for draft",
     "OpenAI draft metadata: No Issues; workflow skill: Checks passed",
-    "All eight GitHub CI jobs passed on app implementation commit 6b3d36ec7de8bd41f3de685e668d305941dede64"
+    "All eight GitHub CI jobs passed on app implementation commit 6b3d36ec7de8bd41f3de685e668d305941dede64",
+    "All eight GitHub CI jobs passed on final app PR head 4b4c315181ebcdb963cfb07f9298090862eec4f5",
+    "Owner-approved app PR #992 merged; Vercel Production Ready at commit 94c0796",
+    "Production challenge HTTP 200 and exact token match; unauthenticated MCP HTTP 401 with metadata/error description; resource metadata HTTP 200",
+    "OpenAI portal: Domain verified, persisted after reload"
   ],
   "notRun": [
     "Actual ChatGPT or dot installation and OAuth sign-in",
@@ -28,11 +32,10 @@
     "Five positive and three negative review cases in host",
     "Cursor/Grok actual-client regression",
     "Recorded demo",
-    "OpenAI MCP tool scan",
     "Native PostgreSQL migration rehearsal (initdb not available on PATH; no SQL migration was changed)"
   ],
-  "portal": "Business \u2014 Abbelo verified; private draft 0.1.0 uploaded. Domain challenge prepared in app PR #992; awaiting approved production deployment. Exact OAuth callback still unavailable.",
-  "productionChanges": false,
+  "portal": "Business \u2014 Abbelo verified; private draft 0.1.0 uploaded; metadata and skill scans pass; domain verified. MCP authorization remains unavailable, and a requested MCP scan failed before tool discovery. Exact callback and client setup are still unavailable.",
+  "productionChanges": true,
   "oauthClientsCreated": false,
   "paidTestsPerformed": false,
   "submittedForReview": false,
@@ -42,7 +45,13 @@
     "The app build has 36 existing ESLint baseline violations; no increase.",
     "Root plugin documentation already labels Grok end-to-end behavior unverified.",
     "Publisher country/availability/commerce/policy confirmation is pending.",
-    "The exact OpenAI callback must be copied after domain verification; no guessed URL is registered."
+    "The exact OpenAI callback remains unavailable despite successful domain verification; no guessed URL is registered."
   ],
-  "draftUploaded": true
+  "draftUploaded": true,
+  "productionCommit": "94c0796ab3883c206d6afe6980fa04e54ae6152f",
+  "productionPullRequest": "https://github.com/abbelo-hq/abbelo/pull/992",
+  "failedOrBlocked": [
+    "OpenAI MCP connection drawer reports Authorization unavailable with OAuth disabled; Connect does not begin authorization or display client/callback configuration.",
+    "OpenAI MCP Rescan attempted after verified domain; portal reports latest scan did not complete and has no discovered tools."
+  ]
 }

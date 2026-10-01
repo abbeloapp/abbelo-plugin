@@ -31,7 +31,7 @@ Vendored schemas are exact public Agent Plugins 1.0.0 schema files downloaded on
 ## Required next steps
 
 1. Confirm the legal publisher, country, availability, support/policies and existing-account payment model.
-2. Review the companion Abbelo source changes for explicit session permission and OpenAI OAuth error metadata. Obtain approval before deployment.
+2. Companion app PR #992 is approved, merged and deployed. Production smoke checks pass and OpenAI domain verification is complete. Resolve the portal’s remaining **Authorization unavailable** state; MCP discovery has not succeeded.
 3. Follow [OAuth setup](review/oauth.md). Capture the exact callback from the portal and obtain approval before registering an OpenAI client. Preserve existing clients, scopes and revocation rules.
 4. Obtain a synthetic reviewer account and an explicit paid-test budget. Run [acceptance](review/acceptance.md), including the packaged review cases, in actual ChatGPT and a dot.
 5. Record [the demo](review/demo.md); add the reviewed accessible URL to the manifest.

@@ -26,7 +26,7 @@ App inspection base: `4f3e6b1800396ad279ee8f5454ab5bb2726dd617` in `abbeloapp/ab
 
 Six existing tools cover account permissions, entitled work discovery, empty conversation creation, one paid session submission, passive Run polling and saved history. The canonical server verifies resource-bound signed tokens plus current owner, grant, client, consent and Guide access. Retry identity remains stable across refresh of the same connection. A new connection has a different idempotency namespace.
 
-The app’s current handoff defaults to read access and cannot newly authorize session execution through that UI. The prepared companion changes add explicit read/session choices, retain provider approval, and add per-tool OAuth compatibility metadata and reauthorization error metadata. No credential, client registration, database permission, scope grant, production flag or issuer setting is changed by this preparation.
+The inspected app handoff originally defaulted to read access and could not newly authorize session execution through that UI. Owner-approved PR #992 is now deployed at merge commit `94c0796ab3883c206d6afe6980fa04e54ae6152f`: it adds explicit read/session choices, retains provider approval, adds per-tool OAuth compatibility and reauthorization metadata, and hosts the exact OpenAI domain challenge. No OAuth credential, client registration, database permission, account scope grant, production flag or issuer setting was changed.
 
 The root plugin README calls Grok end-to-end compatibility unverified. Its files are preserved; no new claim of working Grok or Cursor execution is made. Protocol regression fixtures cover the existing SDK legacy and modern versions, not real clients.
 
