@@ -11,7 +11,7 @@ Prepared September 30, 2026. **Not submitted, approved, published, or verified i
 - `abbelo/.codex-plugin/plugin.json`: derived compatibility metadata for older Codex loaders. The portable root and inline `extensions.com.openai` are authoritative in the current public importer. Compatibility metadata omits the newer support field; the authoritative listing includes it. The builder checks drift.
 - `review/`: operator-only preparation documents and unresolved gates, excluded from the distributable ZIP. Never put reviewer credentials here.
 
-Abbelo is the existing product/author name, not a claim that its legal publishing identity has been verified. `developerName` must match the identity selected in the portal. Country targeting and commerce declarations remain omitted until the owner confirms them. No fabricated demo URL is present.
+OpenAI Business verification now shows the approved identity **Business — Abbelo**. The draft uses that identity and its matching `developerName`. Country targeting and commerce declarations remain omitted until the owner confirms them. No fabricated demo URL is present.
 
 ## Rebuild and validate
 

@@ -1,11 +1,11 @@
 # Listing and review cases
 
-**Candidate copy. Publisher identity, policies, commerce and availability still need owner confirmation. No case below has been run in ChatGPT or a dot.**
+**Candidate copy. Business — Abbelo is verified; policies, commerce and availability still need owner confirmation. No case below has been run in ChatGPT or a dot.**
 
 Name: Abbelo
 Subtitle: Your work, with Abbelo
 Category: Productivity (confirm the portal selection)
-Existing brand: Abbelo (not yet a verified legal publisher)
+Verified portal publisher: Business — Abbelo (country details remain unconfirmed)
 
 Use your Abbelo Guides and saved work in ChatGPT. Find Guides available to your account, practice skills and habits, and continue your conversations with Abbelo.
 

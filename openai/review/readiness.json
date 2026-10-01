@@ -1,8 +1,8 @@
 {
   "updated": "2026-09-30",
-  "status": "prepared locally; not submitted, approved or published",
+  "status": "Private OpenAI draft uploaded; domain/OAuth/live review testing incomplete; not submitted for review or published",
   "gates": {
-    "publisher_identity_confirmed_and_verified": false,
+    "publisher_identity_confirmed_and_verified": true,
     "publisher_country_confirmed": false,
     "availability_countries_confirmed": false,
     "support_and_policies_approved": false,

@@ -1,11 +1,13 @@
 # Official portal walkthrough and approval boundaries
 
-Source: [OpenAI's submission guide](https://developers.openai.com/plugins/deploy/submission), checked September 30, 2026. The authenticated [Plugins portal](https://platform.openai.com/plugins) was inspected under the Abbelo organization and showed the initial upload workflow. No upload or review submission was performed.
+Source: [OpenAI's submission guide](https://developers.openai.com/plugins/deploy/submission), checked September 30, 2026. The owner completed Business verification. Version 0.1.0 was uploaded as a private draft under **Business — Abbelo**. Metadata reports **No Issues** and the workflow skill reports **Checks passed**. No review submission or publication was performed.
+
+The current blocker is domain verification. The exact challenge file is prepared in app PR #992 and needs production deployment approval. The callback and OAuth client remain unconfigured. The review form defaults to All supported countries; this has not been confirmed or saved as an owner declaration.
 
 ## Preparation and draft setup
 
 1. Open [organization settings](https://platform.openai.com/settings/organization/general). The owner chooses the legal individual/business identity and completes required verification. Do not invent a country, company name, address, payment detail or legal declaration. Required verification documents remain with the owner.
-2. In [Plugins](https://platform.openai.com/plugins), select **Upload new or existing plugin**. Choose the verified developer identity and the reviewed ZIP. Upload creates a draft; it is not approval or publication. Owner approval is requested before the first upload in this workflow.
+2. In [Plugins](https://platform.openai.com/plugins), select **Upload new or existing plugin**. Choose the verified developer identity and the reviewed ZIP. Upload creates a draft; it is not approval or publication. Use the owner-authorized draft package; approval to submit for review and publish remains separate.
 3. In **Metadata & Skills**, inspect the listing, cases and automated findings. Confirm publisher identity, category, country availability and the four public URLs. Resolve package findings in source and reupload.
 4. In **MCPs**, choose Abbelo and **Connect**. Record the exact displayed callback/client requirements. Obtain approval for the specific WorkOS client registration before creating credentials or changing production authentication.
 5. Record the domain challenge and exact portal URL. Prepare the file change, then obtain production deployment approval before hosting the token. Never overwrite another plugin's verification token. Deployment and successful challenge readback are separate evidence.
