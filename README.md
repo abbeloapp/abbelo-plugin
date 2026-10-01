@@ -67,3 +67,7 @@ Removing a plugin or closing a transport session is not the same as revoking its
 ## License
 
 The plugin configuration, documentation, and skill are MIT licensed. Abbelo's name and logo remain Abbelo branding; the license does not grant trademark rights or permission to imply endorsement. The plugin license does not license Guide content, member data, or Abbelo's hosted service.
+
+## OpenAI submission preparation
+
+The separate [OpenAI candidate](openai/README.md) reuses this endpoint, branding and workflow without changing the root Cursor/Grok package. It is prepared for validation, not yet submitted or verified in ChatGPT/dots. See its readiness gates before attempting registration, deployment, paid tests or publication.

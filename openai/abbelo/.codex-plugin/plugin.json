@@ -1,0 +1,49 @@
+{
+  "name": "abbelo",
+  "version": "0.1.0",
+  "description": "Find accessible Guides, practice with Abbelo and continue your saved conversations.",
+  "author": {
+    "name": "Abbelo",
+    "email": "support@abbelo.com",
+    "url": "https://abbelo.com"
+  },
+  "homepage": "https://abbelo.com/developers/mcp",
+  "repository": "https://github.com/abbeloapp/abbelo-plugin",
+  "license": "MIT",
+  "keywords": [
+    "abbelo",
+    "guides",
+    "learning",
+    "skills",
+    "habits"
+  ],
+  "skills": "./skills/",
+  "mcpServers": {
+    "abbelo": {
+      "type": "http",
+      "url": "https://abbelo.com/mcp"
+    }
+  },
+  "interface": {
+    "displayName": "Abbelo",
+    "shortDescription": "Your work, with Abbelo",
+    "longDescription": "Use your Abbelo Guides and saved work in ChatGPT. Find Guides available to your account, practice skills and habits, and continue your conversations with Abbelo.\n\nConnect your own Abbelo account. Choose read access to find work and read saved results, or explicitly allow sessions to send messages and save results. Only sending a session message uses Abbelo AI credits. Connecting, finding Guides, starting an empty conversation and reading results do not.\n\nYour Guide access restrictions still apply. Results are saved in the same conversation in Abbelo Home. Disconnect anytime in Abbelo Settings. The plugin cannot purchase Guides, buy credits or change billing.",
+    "developerName": "Abbelo",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://abbelo.com",
+    "privacyPolicyURL": "https://abbelo.com/privacy",
+    "termsOfServiceURL": "https://abbelo.com/terms",
+    "defaultPrompt": [
+      "Find a Guide I can use to practice clear communication.",
+      "Show my saved Abbelo conversations.",
+      "Help me continue a session in Abbelo."
+    ],
+    "brandColor": "#181818",
+    "composerIcon": "./assets/abbelo.png",
+    "logo": "./assets/abbelo.png"
+  }
+}
