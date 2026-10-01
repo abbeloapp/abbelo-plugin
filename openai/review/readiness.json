@@ -18,6 +18,7 @@
     "five_positive_three_negative_cases_run": false,
     "recorded_demo_reviewed": false,
     "portal_scans_passed": false,
-    "submission_approved": false
+    "submission_approved": true,
+    "legal_declarations_approved": false
   }
 }

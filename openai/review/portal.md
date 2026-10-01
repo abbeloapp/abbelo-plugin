@@ -16,7 +16,11 @@ With owner approval, app PR #992 was merged and deployed as production commit `9
 
 ## Submit for review
 
-After every readiness gate passes, show the owner the final package hash, exact listing, country/commerce declarations, complete case results, demo and portal findings. Ask approval before **Submit for review**. The owner must review and approve any legal/policy attestations. A submitted draft is only under review, not approved or live.
+The owner explicitly requested submission on September 30. Do not ask for the same submission permission again. After every readiness gate passes, present the final package hash, exact listing, country/commerce declarations, complete case results, demo and portal findings. Obtain the separately required legal/policy approvals at the final action. A submitted draft is only under review, not approved or live.
+
+The submission dialog was inspected after that request. **Submit is disabled** because the recording URL is missing from `extensions.com.openai.review.demo_recording_url`. Five positive and three negative cases appear as complete form fields; their execution remains untested. The portal explicitly labels MCP scan findings non-blocking, though they may lead to rejection. Authentication still blocks completing real tests and an honest recording.
+
+Six legal attestations are required and remain unchecked: Developer Apps Terms/Plugin Guidelines compliance, applicable laws, no money/crypto transfers or investment trades, rights to third-party content/APIs, suitability for users under 18 with no mature content, and no targeting under 13 or sharing their personal information. Submission authorization is not approval of unsupported attestations.
 
 ## Publish after approval
 

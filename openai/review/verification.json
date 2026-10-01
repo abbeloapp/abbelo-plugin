@@ -21,7 +21,8 @@
     "All eight GitHub CI jobs passed on final app PR head 4b4c315181ebcdb963cfb07f9298090862eec4f5",
     "Owner-approved app PR #992 merged; Vercel Production Ready at commit 94c0796",
     "Production challenge HTTP 200 and exact token match; unauthenticated MCP HTTP 401 with metadata/error description; resource metadata HTTP 200",
-    "OpenAI portal: Domain verified, persisted after reload"
+    "OpenAI portal: Domain verified, persisted after reload",
+    "Existing personal ChatGPT developer-mode client reaches deployed Abbelo permission screen; no consent granted. This is not public-draft OAuth acceptance."
   ],
   "notRun": [
     "Actual ChatGPT or dot installation and OAuth sign-in",
@@ -53,5 +54,6 @@
   "failedOrBlocked": [
     "OpenAI MCP connection drawer reports Authorization unavailable with OAuth disabled; Connect does not begin authorization or display client/callback configuration.",
     "OpenAI MCP Rescan attempted after verified domain; portal reports latest scan did not complete and has no discovered tools."
-  ]
+  ],
+  "connectionInvestigation": "Production WorkOS CIMD and DCR are disabled. CIMD-only change and dedicated reviewer accounts await owner approval; neither changed."
 }

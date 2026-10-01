@@ -1,6 +1,6 @@
 # OAuth setup: pending exact dashboard values and approval
 
-Do not use a sample callback or a Cursor client ID. Do not enable DCR/CIMD to bypass registration. Do not share an owner's token or put secrets in the ZIP.
+Do not use a sample callback or a Cursor client ID. Production authentication changes, including DCR/CIMD, require the owner's specific approval. Do not share an owner's token or put secrets in the ZIP.
 
 ## Verified endpoints
 
@@ -19,11 +19,15 @@ OpenAI documents two patterns. With correctly implemented RFC 9207 issuer identi
 
 Abbelo’s live issuer does not advertise `authorization_response_iss_parameter_supported`. Therefore do not choose the stable URL. The exact callback remains unknown until the MCP management form shows it. Copy that full value and show it to the owner before creating a client. A developer-mode connection and the public submission draft may have different callback IDs; record each actual value separately.
 
-A stable callback would additionally require correct `iss` on successful and failed responses and exact discovery issuer matching. Do not advertise support solely to obtain a preferred URL. CIMD URLs are also flow-dependent; this candidate intentionally stays with operator registration.
+A stable callback would additionally require correct `iss` on successful and failed responses and exact discovery issuer matching. Do not advertise support solely to obtain a preferred URL. CIMD URLs are also flow-dependent; capture and validate the actual client metadata rather than guessing it.
 
 ## Observed portal blocker
 
-After the owner-approved production deployment and successful domain verification, the connection drawer still reports **Authorization unavailable**. Its OAuth selector is disabled; Connect exposes neither an authorization flow nor callback/client fields. A requested rescan failed before tool discovery. OpenAI documents predefined clients, but this portal route has not exposed their configuration. The cause is not proven. Do not substitute a guessed callback, place credentials in the package, or enable DCR/CIMD to work around this. Resolve the supported configuration path before proposing the exact client registration.
+After the owner-approved production deployment and successful domain verification, the connection drawer still reports **Authorization unavailable**. Its OAuth selector is disabled; Connect exposes neither an authorization flow nor callback/client fields. A requested rescan failed before tool discovery. OpenAI documents predefined clients, but this portal route has not exposed their configuration. The cause is not proven.
+
+On September 30, the existing personal ChatGPT developer-mode plugin successfully opened the deployed Abbelo permission screen through its previously registered WorkOS client. Neither permission button was clicked. This is evidence that the existing redirect and consent entry point respond, not evidence of token issuance, tools, session execution, or the separate public draft's authentication.
+
+WorkOS Connect configuration currently has both CIMD and DCR disabled. [OpenAI](https://developers.openai.com/plugins/build/auth) and [WorkOS](https://workos.com/docs/authkit/mcp) document CIMD as a supported registration path. A concrete proposal to enable CIMD only is awaiting owner approval. DCR remains off. Enabling CIMD is a hypothesis to test against the public draft, not an established fix. It must retain S256, account-bound explicit consent, resource audience checks, client scope validation, refresh binding and revocation. The existing adapter accepts encoded HTTPS client identifiers in synthetic tests; actual WorkOS-issued CIMD credentials are still untested.
 
 ## Proposed registration, not performed
 
@@ -39,4 +43,4 @@ Copy the exact portal callback. Configure only verified necessary scopes. A Work
 4. Refresh with the real provider refresh token through the host. Preserve connection identity and exact-retry behavior.
 5. Disconnect in Abbelo Settings. Reject both old and refreshed access without reading content or admitting another Run. Determine separately whether host-side removal revokes provider consent; do not equate uninstalling with revocation.
 
-No exact callback, dedicated client, real token issuance, refresh, or revocation has been verified for OpenAI in this preparation.
+No exact callback or dedicated client has been verified for the public submission draft. The existing personal plugin's registered callback was inspected separately and must not be substituted for that draft. Real token issuance, refresh and revocation remain untested in this preparation.

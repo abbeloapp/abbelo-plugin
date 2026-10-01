@@ -35,4 +35,4 @@ Vendored schemas are exact public Agent Plugins 1.0.0 schema files downloaded on
 3. Follow [OAuth setup](review/oauth.md). Capture the exact callback from the portal and obtain approval before registering an OpenAI client. Preserve existing clients, scopes and revocation rules.
 4. Obtain a synthetic reviewer account and an explicit paid-test budget. Run [acceptance](review/acceptance.md), including the packaged review cases, in actual ChatGPT and a dot.
 5. Record [the demo](review/demo.md); add the reviewed accessible URL to the manifest.
-6. Complete portal checks, then request approval to submit. Approval by OpenAI is a separate event. Publication needs another owner decision.
+6. Complete portal checks and obtain approval for the required legal declarations. The owner has already requested submission. Approval by OpenAI is a separate event. Publication needs another owner decision.
