@@ -59,7 +59,7 @@
   "lastRecheck": {
     "date": "2026-10-06",
     "pluginCommit": "91b481d7ec9247ba29f13b08ed78081e4536607a",
-    "scope": "Live public discovery, authenticated OpenAI portal inspection, local package and synthetic MCP regression checks. No new deployment or grant.",
+    "scope": "Live public production/staging discovery, authenticated OpenAI portal and WorkOS staging inspection, local package and synthetic MCP regression checks. No new deployment or grant.",
     "portal": {
       "url": "https://platform.openai.com/plugins/manage/plugin_asdk_app_6abda5a4005081918646fb59fb8cc71c?tab=mcp&version=appsub_6abda5a400808191833c695930b5c6ab&mcp=server%3Aabbelo",
       "version": "0.1.0",
@@ -137,8 +137,8 @@
       },
       "fullAppBuildRerun": false
     },
-    "hypothesis": "No automatic client identification/registration is advertised and the portal exposes no predefined-client fields. Inspect existing WorkOS staging, then obtain approval for a staging-only CIMD test before proposing production changes; not a verified fix.",
-    "providerDashboard": "Sign-in required. Automatic approval review rejected Google sign-in and the one retry with parent-relayed approval. User must complete sign-in directly; no alternative path attempted.",
+    "hypothesis": "No automatic client identification/registration is advertised and the OpenAI portal exposes no predefined-client fields. Staging resource/login configuration is correct; request CIMD-only staging approval and verify current database isolation before separately approved synthetic consent. Not a verified fix.",
+    "providerDashboard": "Signed in successfully on fresh inspection. Existing staging environment and Connect configuration verified read-only. Earlier sign-in rejections are historical and no longer a login blocker.",
     "securityConfigurationChanged": false,
     "credentialsCreated": false,
     "oauthGrantsCreated": false,
@@ -147,7 +147,7 @@
     "submittedForReview": false,
     "published": false,
     "remainingApprovals": [
-      "Exact staging-only CIMD/resource/login configuration and synthetic read-only consent after inspection",
+      "Enable CIMD only in existing WorkOS staging environment environment_01M32YFM32Z2Q6A7CA1EP88EC2; retain DCR disabled; stop if shared Enable cannot separate them",
       "Production OAuth configuration only after staging proof",
       "Dedicated synthetic reviewer identities and scoped account consent",
       "Bounded paid session test budget",
@@ -171,10 +171,45 @@
       "firstPartyConfigurationCompatibility": "separate unverified blocker; do not remove grant claim or replay prior recovery"
     },
     "saferTest": {
-      "documented": "Isolated WorkOS staging environment with separate identities/keys; inspect existing configuration before proposing exact mutation.",
-      "providerCimdAllowlist": "No documented per-client/domain allowlist found; dashboard remains uninspected.",
+      "documented": "Existing WorkOS staging environment inspected signed in; resource and external sign-in URI already match the sandbox.",
+      "providerCimdAllowlist": "No documented per-client/domain allowlist found; current disabled dashboard exposes shared Enable control, not inspected or changed.",
       "localEmulator": "No documented CIMD coverage; not real token/consent proof.",
       "configured": false
+    },
+    "stagingInspection": {
+      "date": "2026-10-06",
+      "signedIn": true,
+      "project": "Abbelo's Project",
+      "environment": "Staging",
+      "environmentId": "environment_01M32YFM32Z2Q6A7CA1EP88EC2",
+      "url": "https://dashboard.workos.com/environment_01M32YFM32Z2Q6A7CA1EP88EC2/connect/configuration",
+      "cimdEnabled": false,
+      "dcrEnabled": false,
+      "enableControl": "Shared Enable button; not clicked; stop if CIMD cannot be selected separately",
+      "resource": "https://abbelo-git-codex-creator-payments-sandbox-abbeloapp.vercel.app/mcp",
+      "resourceIsDefault": true,
+      "externalSignInUri": "https://abbelo-git-codex-creator-payments-sandbox-abbeloapp.vercel.app/connect/mcp",
+      "manualApplication": {
+        "name": "Abbelo MCP staging test",
+        "applicationId": "app_01M3648H7KNPXRWVZRSY31785K",
+        "clientId": "client_01M3648H7JYA4EE2W23VDSW9K5",
+        "callback": "http://127.0.0.1:8894/callback",
+        "scopeCeiling": [
+          "abbelo:read",
+          "abbelo:write"
+        ],
+        "firstPartyAndPkceSettingsVisible": false
+      },
+      "databaseIsolation": "Current server/browser project targets not yet verified; public endpoints and historical receipts are insufficient",
+      "configurationChanged": false,
+      "credentialsCreated": false,
+      "grantsCreated": false,
+      "minimumProposedChange": "CIMD only in this staging environment; keep DCR disabled; no resource/default/login/client/callback/scope/production changes",
+      "proposedConsent": "Separate approval after database isolation verification; synthetic member; abbelo:read initially; refresh scope must be explicitly approved",
+      "screenshots": [
+        "workos-staging-connect-config.jpg",
+        "workos-staging-test-client.jpg"
+      ]
     }
   }
 }
