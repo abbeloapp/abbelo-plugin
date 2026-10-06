@@ -55,5 +55,126 @@
     "OpenAI MCP connection drawer reports Authorization unavailable with OAuth disabled; Connect does not begin authorization or display client/callback configuration.",
     "OpenAI MCP Rescan attempted after verified domain; portal reports latest scan did not complete and has no discovered tools."
   ],
-  "connectionInvestigation": "Production WorkOS CIMD and DCR are disabled. CIMD-only change and dedicated reviewer accounts await owner approval; neither changed."
+  "connectionInvestigation": "Production WorkOS CIMD and DCR are disabled. CIMD-only change and dedicated reviewer accounts await owner approval; neither changed.",
+  "lastRecheck": {
+    "date": "2026-10-06",
+    "pluginCommit": "91b481d7ec9247ba29f13b08ed78081e4536607a",
+    "scope": "Live public discovery, authenticated OpenAI portal inspection, local package and synthetic MCP regression checks. No new deployment or grant.",
+    "portal": {
+      "url": "https://platform.openai.com/plugins/manage/plugin_asdk_app_6abda5a4005081918646fb59fb8cc71c?tab=mcp&version=appsub_6abda5a400808191833c695930b5c6ab&mcp=server%3Aabbelo",
+      "version": "0.1.0",
+      "reviewStatus": "Not submitted",
+      "publication": "Not published",
+      "metadata": "No Issues",
+      "skill": "Checks passed",
+      "domain": "Domain verified",
+      "authentication": "Unavailable",
+      "mcpConfiguration": "Configuration incomplete",
+      "toolFindings": 0,
+      "rescan": "Latest scan did not complete. No tools discovered.",
+      "connectionDrawer": "MCP URL and disabled OAuth selector only; no predefined client ID, secret, callback or CIMD document fields exposed.",
+      "otherManagementControls": "More plugin actions exposes Download draft ZIP and Delete plugin only.",
+      "reviewInformation": "Incomplete; country selector defaults to All supported countries. No values saved."
+    },
+    "publicDiscovery": {
+      "https://abbelo.com/mcp": {
+        "status": 401,
+        "wwwAuthenticate": "Bearer resource_metadata=\"https://abbelo.com/.well-known/oauth-protected-resource/mcp\", error=\"invalid_token\", error_description=\"Connect your Abbelo account again.\""
+      },
+      "https://abbelo.com/.well-known/oauth-protected-resource/mcp": {
+        "status": 200,
+        "resource": "https://abbelo.com/mcp",
+        "authorizationServers": [
+          "https://satisfying-gust-31.authkit.app"
+        ],
+        "scopes": [
+          "abbelo:read",
+          "abbelo:write"
+        ]
+      },
+      "https://abbelo.com/.well-known/oauth-protected-resource": {
+        "status": 404,
+        "interpretation": "Not itself a spec violation: challenge advertises valid /mcp metadata path."
+      },
+      "https://satisfying-gust-31.authkit.app/.well-known/oauth-authorization-server": {
+        "status": 200,
+        "S256": true,
+        "tokenEndpointAuthMethods": [
+          "none",
+          "client_secret_post",
+          "client_secret_basic"
+        ],
+        "CIMDAdvertised": false,
+        "DCRRegistrationEndpointAdvertised": false,
+        "issuerResponseIdentificationAdvertised": false,
+        "scopes": [
+          "email",
+          "offline_access",
+          "openid",
+          "profile"
+        ]
+      },
+      "https://satisfying-gust-31.authkit.app/.well-known/openid-configuration": {
+        "status": 200,
+        "codeChallengeMethodsSupportedPresent": false
+      }
+    },
+    "localValidation": {
+      "package": "passed",
+      "deterministicZip": "passed",
+      "zipSha256": "c3a0b1c9398d22273980bf31f937400a3d487dae66d0a2e9ad77738c85364418",
+      "submissionReadiness": "fails as designed; 17 recorded blockers",
+      "mcpFixtureSuite": "all 8 scripts passed",
+      "protocolVersions": [
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "fixtureProvenance": {
+        "sourceHead": "d73a017d670676d09b49ad502141fe0b921a9e17",
+        "existingUserChangesPresent": true,
+        "runFromTemporaryCopy": true,
+        "provesProductionOrHostAcceptance": false
+      },
+      "fullAppBuildRerun": false
+    },
+    "hypothesis": "No automatic client identification/registration is advertised and the portal exposes no predefined-client fields. Inspect existing WorkOS staging, then obtain approval for a staging-only CIMD test before proposing production changes; not a verified fix.",
+    "providerDashboard": "Sign-in required. Automatic approval review rejected Google sign-in and the one retry with parent-relayed approval. User must complete sign-in directly; no alternative path attempted.",
+    "securityConfigurationChanged": false,
+    "credentialsCreated": false,
+    "oauthGrantsCreated": false,
+    "paidTestsPerformed": false,
+    "productionChanges": false,
+    "submittedForReview": false,
+    "published": false,
+    "remainingApprovals": [
+      "Exact staging-only CIMD/resource/login configuration and synthetic read-only consent after inspection",
+      "Production OAuth configuration only after staging proof",
+      "Dedicated synthetic reviewer identities and scoped account consent",
+      "Bounded paid session test budget",
+      "Country/commerce/policy and final legal attestations"
+    ],
+    "sources": [
+      "https://developers.openai.com/plugins/build/auth",
+      "https://workos.com/docs/authkit/mcp",
+      "https://workos.com/docs/reference/workos-connect/applications",
+      "https://workos.com/docs/authkit/environments",
+      "https://workos.com/docs/authkit/testing"
+    ],
+    "codeInspection": {
+      "source": "current GitHub main, fetched 2026-10-06",
+      "workosAdapterBlob": "a802f51e26895ccb07f697271c4f69d3e5392fcf",
+      "grantStoreBlob": "56edb33f62eec799f9f8e9deb1729f244a411585",
+      "initialClientAllowlist": false,
+      "exactClientConsentBinding": true,
+      "pkceAndScopeCeilingRequired": true,
+      "standaloneCompletionAlwaysSendsConsentOptions": true,
+      "firstPartyConfigurationCompatibility": "separate unverified blocker; do not remove grant claim or replay prior recovery"
+    },
+    "saferTest": {
+      "documented": "Isolated WorkOS staging environment with separate identities/keys; inspect existing configuration before proposing exact mutation.",
+      "providerCimdAllowlist": "No documented per-client/domain allowlist found; dashboard remains uninspected.",
+      "localEmulator": "No documented CIMD coverage; not real token/consent proof.",
+      "configured": false
+    }
+  }
 }

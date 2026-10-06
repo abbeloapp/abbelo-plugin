@@ -2,6 +2,24 @@
 
 Do not use a sample callback or a Cursor client ID. Production authentication changes, including DCR/CIMD, require the owner's specific approval. Do not share an owner's token or put secrets in the ZIP.
 
+## October 6 recheck and minimum approval
+
+The live OpenAI draft still shows **Not submitted**, **Not published**, **Domain verified**, and **Authentication unavailable**. A fresh MCP rescan failed without discovering tools. The connection drawer exposes the MCP URL and a disabled OAuth selector, but no predefined client ID, secret, callback or CIMD document fields. The plugin actions menu offers only download and delete. Although OpenAI documents predefined clients, this draft's visible management surface does not expose that route. Do not substitute the personal developer-mode connection's client or callback.
+
+Public discovery remains healthy: `/mcp` returns a 401 challenge pointing to the working protected-resource document, its issuer matches the authorization-server metadata, and that metadata advertises S256. Neither CIMD nor DCR is advertised. The root protected-resource URL returns 404, which is not by itself a defect because the 401 explicitly advertises the working `/mcp` metadata path. The provider's OIDC document omits PKCE methods; its OAuth authorization-server document includes S256.
+
+Test the CIMD hypothesis in an isolated environment before proposing a production change. [WorkOS environments](https://workos.com/docs/authkit/environments) documents separate staging and production keys, users, and connections; staging supports localhost callbacks. After the owner signs in, inspect the existing staging environment read-only, record its exact issuer/resource/login configuration, and request approval for the specific staging-only CIMD setup and synthetic read-only consent test. Do not point a test environment at production data. No documented CIMD client/domain allowlist was found, and the local emulator does not document CIMD coverage or prove real OAuth behavior. See [WorkOS testing](https://workos.com/docs/authkit/testing).
+
+If staging proves compatibility, a later production proposal can enable **Client ID Metadata Document (CIMD) only** in **WorkOS → Abbelo Production → Connect → Configuration**, then reread public discovery and retry the OpenAI connection. Keep DCR off, the exact resource/audience `https://abbelo.com/mcp`, PKCE S256, current scopes, explicit user consent, and every existing grant/client/owner check. Do not add resource wildcards, a default resource, broad scopes, a guessed callback or a client secret. Production changes need their own approval.
+
+CIMD changes client identification for the WorkOS environment; it must not be described as an OpenAI-only allowlist. The toggle permits additional clients to identify themselves and request consent. It does not itself authorize any member's saved work. Start subsequent testing with an approved synthetic reviewer identity and `abbelo:read`. Request `abbelo:write` only through a separately approved session-consent test. The provider also advertises `openid`, `email`, `profile`, and `offline_access`; inspect the actual requested identity and refresh scopes before completing consent.
+
+The current adapter's encoded HTTPS client-ID handling passes synthetic tests, but real CIMD application metadata and token claims remain unverified. Grant activation requires exact client identity, PKCE and an adequate scope ceiling. Preserve those checks if the provider shape differs; diagnose the difference before proposing code changes. Current GitHub `main` confirms no initial client allowlist and still sends `user_consent_options` on every standalone completion. A first-party client therefore remains a separate compatibility risk; never remove the grant claim to bypass that rejection.
+
+WorkOS currently requires sign-in. Automatic approval review rejected Google sign-in and rejected one retry because parent-relayed authorization was not accepted. The owner must complete the existing WorkOS sign-in directly before the current provider configuration can be inspected. No setting, credential, OAuth grant, or paid test changed during this recheck. The older recovery attempt is not a reason to replay an identity mutation or assume a delayed write exists.
+
+See `verification.json` → `lastRecheck` for public endpoint results and local validation provenance. The rebuilt package is byte-identical to the uploaded candidate; all eight MCP fixture scripts pass, but neither result is real ChatGPT/dot acceptance.
+
 ## Verified endpoints
 
 - Resource and MCP URL: `https://abbelo.com/mcp`
