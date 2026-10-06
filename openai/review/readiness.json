@@ -1,0 +1,24 @@
+{
+  "updated": "2026-10-06",
+  "status": "Approved staging CIMD-only change verified; separate database targets and compatible staging schema checked; actual OAuth consent/host tests incomplete; live public draft remains blocked and unsubmitted",
+  "gates": {
+    "publisher_identity_confirmed_and_verified": true,
+    "publisher_country_confirmed": false,
+    "availability_countries_confirmed": false,
+    "support_and_policies_approved": false,
+    "existing_account_commerce_policy_confirmed": false,
+    "exact_dashboard_callback_captured": false,
+    "oauth_client_registration_approved_and_verified": false,
+    "production_deployment_approved_and_verified": true,
+    "domain_challenge_approved_and_verified": true,
+    "dedicated_reviewer_account_ready": false,
+    "paid_test_budget_approved": false,
+    "chatgpt_and_dot_acceptance_passed": false,
+    "cursor_grok_live_regression_passed": false,
+    "five_positive_three_negative_cases_run": false,
+    "recorded_demo_reviewed": false,
+    "portal_scans_passed": false,
+    "submission_approved": true,
+    "legal_declarations_approved": false
+  }
+}
