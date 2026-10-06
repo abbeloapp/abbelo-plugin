@@ -59,7 +59,7 @@
   "lastRecheck": {
     "date": "2026-10-06",
     "pluginCommit": "91b481d7ec9247ba29f13b08ed78081e4536607a",
-    "scope": "Live public production/staging discovery, authenticated OpenAI portal and WorkOS staging inspection, local package and synthetic MCP regression checks. No new deployment or grant.",
+    "scope": "Live public discovery, authenticated OpenAI/WorkOS/Vercel/Supabase inspection, approved staging-only CIMD enablement, read-only sandbox schema check, local package and synthetic MCP regressions. No deployment or grant.",
     "portal": {
       "url": "https://platform.openai.com/plugins/manage/plugin_asdk_app_6abda5a4005081918646fb59fb8cc71c?tab=mcp&version=appsub_6abda5a400808191833c695930b5c6ab&mcp=server%3Aabbelo",
       "version": "0.1.0",
@@ -137,9 +137,9 @@
       },
       "fullAppBuildRerun": false
     },
-    "hypothesis": "No automatic client identification/registration is advertised and the OpenAI portal exposes no predefined-client fields. Staging resource/login configuration is correct; request CIMD-only staging approval and verify current database isolation before separately approved synthetic consent. Not a verified fix.",
+    "hypothesis": "Staging CIMD enabled and publicly advertised, but actual host identification, provider token shape and synthetic user consent remain untested. Not an established public-draft fix.",
     "providerDashboard": "Signed in successfully on fresh inspection. Existing staging environment and Connect configuration verified read-only. Earlier sign-in rejections are historical and no longer a login blocker.",
-    "securityConfigurationChanged": false,
+    "securityConfigurationChanged": true,
     "credentialsCreated": false,
     "oauthGrantsCreated": false,
     "paidTestsPerformed": false,
@@ -147,7 +147,6 @@
     "submittedForReview": false,
     "published": false,
     "remainingApprovals": [
-      "Enable CIMD only in existing WorkOS staging environment environment_01M32YFM32Z2Q6A7CA1EP88EC2; retain DCR disabled; stop if shared Enable cannot separate them",
       "Production OAuth configuration only after staging proof",
       "Dedicated synthetic reviewer identities and scoped account consent",
       "Bounded paid session test budget",
@@ -171,10 +170,10 @@
       "firstPartyConfigurationCompatibility": "separate unverified blocker; do not remove grant claim or replay prior recovery"
     },
     "saferTest": {
-      "documented": "Existing WorkOS staging environment inspected signed in; resource and external sign-in URI already match the sandbox.",
-      "providerCimdAllowlist": "No documented per-client/domain allowlist found; current disabled dashboard exposes shared Enable control, not inspected or changed.",
+      "documented": "Existing WorkOS staging configured with separate Supabase Preview target; old deployed adapter matches current expiry schema for initial smoke only.",
+      "providerCimdAllowlist": "CIMD enabled after approval; separate DCR checkbox remains off. No initial per-client/domain restriction verified.",
       "localEmulator": "No documented CIMD coverage; not real token/consent proof.",
-      "configured": false
+      "configured": true
     },
     "stagingInspection": {
       "date": "2026-10-06",
@@ -210,6 +209,123 @@
         "workos-staging-connect-config.jpg",
         "workos-staging-test-client.jpg"
       ]
-    }
+    },
+    "stagingAfterApproval": {
+      "date": "2026-10-06",
+      "environmentId": "environment_01M32YFM32Z2Q6A7CA1EP88EC2",
+      "cimdEnabled": true,
+      "dcrEnabled": false,
+      "scope": "existing WorkOS staging only",
+      "approval": "Owner specifically approved staging CIMD only at action time through parent; no consent or production change included",
+      "resourceChanged": false,
+      "externalSignInUriChanged": false,
+      "clientOrCallbackChanged": false,
+      "credentialsCreated": false,
+      "grantsCreated": false,
+      "productionChanged": false,
+      "publicDiscovery": {
+        "staging": {
+          "url": "https://sympathetic-unknown-40-staging.authkit.app/.well-known/oauth-authorization-server",
+          "status": 200,
+          "issuer": "https://sympathetic-unknown-40-staging.authkit.app",
+          "client_id_metadata_document_supported": true,
+          "registration_endpoint": null,
+          "code_challenge_methods_supported": [
+            "S256"
+          ],
+          "token_endpoint_auth_methods_supported": [
+            "none",
+            "client_secret_post",
+            "client_secret_basic"
+          ]
+        },
+        "production": {
+          "url": "https://satisfying-gust-31.authkit.app/.well-known/oauth-authorization-server",
+          "status": 200,
+          "issuer": "https://satisfying-gust-31.authkit.app",
+          "client_id_metadata_document_supported": null,
+          "registration_endpoint": null,
+          "code_challenge_methods_supported": [
+            "S256"
+          ],
+          "token_endpoint_auth_methods_supported": [
+            "none",
+            "client_secret_post",
+            "client_secret_basic"
+          ]
+        }
+      },
+      "screenshot": "workos-staging-cimd-enabled.jpg"
+    },
+    "currentIsolation": {
+      "date": "2026-10-06",
+      "readOnly": true,
+      "vercel": {
+        "project": "abbeloapp/abbelo",
+        "sandbox": {
+          "deploymentId": "dpl_87G9inzEu72mHtzZnLUWKXUJoeow",
+          "url": "https://vercel.com/abbeloapp/abbelo/87G9inzEu72mHtzZnLUWKXUJoeow",
+          "commit": "3ad211e4a8551424207120d7f1a44b44bb1cc73b",
+          "branch": "codex/creator-payments-sandbox",
+          "alias": "https://abbelo-git-codex-creator-payments-sandbox-abbeloapp.vercel.app",
+          "status": "Ready",
+          "functionRegion": "iad1"
+        },
+        "production": {
+          "deploymentId": "dpl_EGyFYRN5VpEdpLvViXW84gzb8fCA",
+          "url": "https://vercel.com/abbeloapp/abbelo/EGyFYRN5VpEdpLvViXW84gzb8fCA",
+          "commit": "32cdb3780101eead0f1e83c409a845b84bb8e5e8",
+          "branch": "main",
+          "status": "Ready, Current",
+          "functionRegion": "iad1"
+        },
+        "currentProjectEnvironmentConfiguration": {
+          "sandboxBranch": "codex/creator-payments-sandbox",
+          "SUPABASE_URL": "https://nukwomvclaxavdmxzbvs.supabase.co",
+          "NEXT_PUBLIC_ABBELO_SUPABASE_URL": "https://nukwomvclaxavdmxzbvs.supabase.co",
+          "production_SUPABASE_URL": "https://apjgcwapxprihicahytd.supabase.co",
+          "sandboxServiceKey": "Separate Secret entry scoped to Preview / codex/creator-payments-sandbox, updated September14; value not read",
+          "note": "Current project scope verified; immutable deployment secret binding not independently revealed or tested"
+        }
+      },
+      "supabase": {
+        "sandbox": {
+          "projectRef": "nukwomvclaxavdmxzbvs",
+          "branch": "creator-payments-sandbox",
+          "type": "Preview",
+          "parentProductionRef": "apjgcwapxprihicahytd",
+          "primaryDatabaseRegion": "us-west-2",
+          "regionLabel": "West US (Oregon)",
+          "overviewStatus": "Unhealthy",
+          "schemaQueryStatus": "succeeded"
+        },
+        "production": {
+          "projectRef": "apjgcwapxprihicahytd",
+          "primaryDatabaseRegion": "us-west-2",
+          "regionLabel": "West US (Oregon)",
+          "overviewStatus": "Healthy"
+        }
+      },
+      "schemaRead": {
+        "project": "nukwomvclaxavdmxzbvs",
+        "query": "select is_nullable, column_default from information_schema.columns where table_schema = 'public' and table_name = 'mcp_grants' and column_name = 'expires_at';",
+        "rows": [
+          {
+            "is_nullable": "NO",
+            "column_default": "(clock_timestamp() + '30 days'::interval)"
+          }
+        ],
+        "interpretation": "Existing schema matches older sandbox grant adapter; initial CIMD smoke is not blocked by null-expiry mismatch. Does not validate production until-disconnect lifecycle."
+      },
+      "limitations": [
+        "No service-key values, token bodies or user rows read",
+        "Synthetic-only content and approved identity not verified in current DB",
+        "Sandbox Unhealthy component not identified from overview; metadata query succeeds",
+        "Initial sandbox handshake cannot prove current production consent text, diagnostics or until-disconnect lifecycle"
+      ],
+      "databaseOrDeploymentChanges": false,
+      "oauthConsentPerformed": false
+    },
+    "securityConfigurationScope": "Owner-approved CIMD only in existing WorkOS staging environment; DCR disabled and production unchanged"
   }
 }

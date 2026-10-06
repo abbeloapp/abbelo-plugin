@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-06",
-  "status": "Rechecked: package and synthetic MCP checks pass; WorkOS staging signed in and inspected; CIMD-only approval pending; live portal authorization unavailable, MCP scan failed, review and host acceptance incomplete",
+  "status": "Approved staging CIMD-only change verified; separate database targets and compatible staging schema checked; actual OAuth consent/host tests incomplete; live public draft remains blocked and unsubmitted",
   "gates": {
     "publisher_identity_confirmed_and_verified": true,
     "publisher_country_confirmed": false,
