@@ -1,5 +1,15 @@
 # Launch status — October 11–12, 2026
 
+## October 12 — human support response and cloud-only follow-up
+
+OpenAI Support replied requesting a screenshot and a short recording from the saved MCP settings through Connect, stopping before authorization and hiding sensitive values. They already have the IDs, timestamps and OAuth parameters. This is a request for evidence, not a diagnosis or supported remediation.
+
+The owner authorized providing the evidence, then instructed the agent to work without controlling their computer. Native recording attempts did not produce a verified screenshot or video file, and computer control stopped. No new Connect attempt, consent, permission change or reset was performed in this continuation.
+
+A follow-up was sent through the connected Gmail service from the verified Abbelo mailbox in the existing case. Gmail confirmed the reply as SENT. It attached the existing sanitized `oauth-runtime-mismatch-2026-10-12.json` record as a text attachment, explicitly stated that no screenshot or recording was attached, and asked the Apps/Plugins team to trace the recorded MCP link response and advise whether visual evidence is essential. No raw authorization values, secrets or tokens were sent. Do not resend this follow-up; private mailbox identifiers remain in the support thread.
+
+Continue cloud-only unless the owner explicitly changes that preference. Await an account-specific remediation proposal or clarification of required evidence. The plugin remains unsubmitted and unpublished. Existing authenticated acceptance and review gates remain open; no production settings, package, deployment or merge changed.
+
 ## October 12, 15:19 UTC — OpenAI support escalation confirmed
 
 The owner explicitly approved sending the prepared diagnostic report to OpenAI Support using the Abbelo account email. The report was sent through the official Help Center support chat and verified in its visible transcript. A follow-up clarified that this is the **public Apps/Plugins submission portal**, preserved separately consented session tools, and requested a human specialist's account-specific remediation proposal before registration/grant changes.
