@@ -1,0 +1,27 @@
+# Official portal walkthrough and approval boundaries
+
+Source: [OpenAI's submission guide](https://developers.openai.com/plugins/deploy/submission), checked September 30, 2026. The owner completed Business verification. Version 0.1.0 was uploaded as a private draft under **Business — Abbelo**. Metadata reports **No Issues** and the workflow skill reports **Checks passed**. No review submission or publication was performed.
+
+With owner approval, app PR #992 was merged and deployed as production commit `94c0796ab3883c206d6afe6980fa04e54ae6152f`. The exact challenge returned HTTP 200 and matched; the OpenAI portal now shows **Domain verified**, including after reload. The remaining connection drawer says **Authorization unavailable**, disables the OAuth selector, and does not expose a callback or client fields. A requested MCP rescan failed before tool discovery. The callback and OAuth client remain unconfigured; no credentials were created. The review form defaults to All supported countries; this has not been confirmed or saved as an owner declaration.
+
+## Preparation and draft setup
+
+1. Open [organization settings](https://platform.openai.com/settings/organization/general). The owner chooses the legal individual/business identity and completes required verification. Do not invent a country, company name, address, payment detail or legal declaration. Required verification documents remain with the owner.
+2. In [Plugins](https://platform.openai.com/plugins), select **Upload new or existing plugin**. Choose the verified developer identity and the reviewed ZIP. Upload creates a draft; it is not approval or publication. Use the owner-authorized draft package; approval to submit for review and publish remains separate.
+3. In **Metadata & Skills**, inspect the listing, cases and automated findings. Confirm publisher identity, category, country availability and the four public URLs. Resolve package findings in source and reupload.
+4. In **MCPs**, choose Abbelo and **Connect**. Record the exact displayed callback/client requirements. Obtain approval for the specific WorkOS client registration before creating credentials or changing production authentication.
+5. Record the domain challenge and exact portal URL. Prepare the file change, then obtain production deployment approval before hosting the token. Never overwrite another plugin's verification token. Deployment and successful challenge readback are separate evidence.
+6. Authenticate the synthetic review account and inspect all six scanned tools, scopes and annotations. Correct issues and rescan. No paid tool call until its bounded test plan is approved.
+7. Follow `acceptance.md` and `demo.md`. Enter test credentials only through secure **Review details**. Add the real reviewed recording URL to the package, rebuild and reupload. Preserve the fixture for future reviews.
+
+## Submit for review
+
+The owner explicitly requested submission on September 30. Do not ask for the same submission permission again. After every readiness gate passes, present the final package hash, exact listing, country/commerce declarations, complete case results, demo and portal findings. Obtain the separately required legal/policy approvals at the final action. A submitted draft is only under review, not approved or live.
+
+The submission dialog was inspected after that request. **Submit is disabled** because the recording URL is missing from `extensions.com.openai.review.demo_recording_url`. Five positive and three negative cases appear as complete form fields; their execution remains untested. The portal explicitly labels MCP scan findings non-blocking, though they may lead to rejection. Authentication still blocks completing real tests and an honest recording.
+
+Six legal attestations are required and remain unchecked: Developer Apps Terms/Plugin Guidelines compliance, applicable laws, no money/crypto transfers or investment trades, rights to third-party content/APIs, suitability for users under 18 with no mature content, and no targeting under 13 or sharing their personal information. Submission authorization is not approval of unsupported attestations.
+
+## Publish after approval
+
+Wait for OpenAI's decision. Resolve any feedback without claiming acceptance. Once approved, obtain a separate owner decision to **Publish plugin**. Verify the public listing and real member installation after publication. Do not turn a local validation success, uploaded draft or review email into a claim of publication.

@@ -1,0 +1,331 @@
+{
+  "date": "2026-09-30",
+  "status": "Production deployed and OpenAI domain verified; OAuth authorization unavailable in portal; live host testing and review incomplete",
+  "pluginBase": "dfc1efe5dda857e6e62cba0eb4dc3bcce8f26d9e",
+  "appBase": "4f3e6b1800396ad279ee8f5454ab5bb2726dd617",
+  "zipSha256": "c3a0b1c9398d22273980bf31f937400a3d487dae66d0a2e9ad77738c85364418",
+  "passed": [
+    "Agent Plugins 1.0.0 manifest and MCP schemas",
+    "OpenAI listing/case/icon/package checks",
+    "Plugin Creator validator on derived compatibility manifest",
+    "Skill Creator frontmatter validator",
+    "Deterministic duplicate ZIP and archive integrity",
+    "Existing Cursor/Grok manifest, MCP config, skill and logo byte preservation",
+    "npm run check:mcp (8 scripts, synthetic auth/provider/storage)",
+    "npm run build (163 stages including SQL fixtures, lint, TypeScript and Next production build)",
+    "Submission-readiness command refuses incomplete candidate",
+    "Public discovery and policy URL reachability",
+    "OpenAI Business identity verification completed by owner; Business \u2014 Abbelo selected for draft",
+    "OpenAI draft metadata: No Issues; workflow skill: Checks passed",
+    "All eight GitHub CI jobs passed on app implementation commit 6b3d36ec7de8bd41f3de685e668d305941dede64",
+    "All eight GitHub CI jobs passed on final app PR head 4b4c315181ebcdb963cfb07f9298090862eec4f5",
+    "Owner-approved app PR #992 merged; Vercel Production Ready at commit 94c0796",
+    "Production challenge HTTP 200 and exact token match; unauthenticated MCP HTTP 401 with metadata/error description; resource metadata HTTP 200",
+    "OpenAI portal: Domain verified, persisted after reload",
+    "Existing personal ChatGPT developer-mode client reaches deployed Abbelo permission screen; no consent granted. This is not public-draft OAuth acceptance."
+  ],
+  "notRun": [
+    "Actual ChatGPT or dot installation and OAuth sign-in",
+    "Provider-issued OpenAI client tokens and refresh",
+    "Live session credit usage and exact retry accounting",
+    "Real Home conversation continuity through ChatGPT/dot",
+    "Live grant revocation and account/Guide negative checks",
+    "Five positive and three negative review cases in host",
+    "Cursor/Grok actual-client regression",
+    "Recorded demo",
+    "Native PostgreSQL migration rehearsal (initdb not available on PATH; no SQL migration was changed)"
+  ],
+  "portal": "Business \u2014 Abbelo verified; private draft 0.1.0 uploaded; metadata and skill scans pass; domain verified. MCP authorization remains unavailable, and a requested MCP scan failed before tool discovery. Exact callback and client setup are still unavailable.",
+  "productionChanges": true,
+  "oauthClientsCreated": false,
+  "paidTestsPerformed": false,
+  "submittedForReview": false,
+  "published": false,
+  "limitations": [
+    "Local provider/database fixtures are not real host acceptance.",
+    "The app build has 36 existing ESLint baseline violations; no increase.",
+    "Root plugin documentation already labels Grok end-to-end behavior unverified.",
+    "Publisher country/availability/commerce/policy confirmation is pending.",
+    "The exact OpenAI callback remains unavailable despite successful domain verification; no guessed URL is registered."
+  ],
+  "draftUploaded": true,
+  "productionCommit": "94c0796ab3883c206d6afe6980fa04e54ae6152f",
+  "productionPullRequest": "https://github.com/abbelo-hq/abbelo/pull/992",
+  "failedOrBlocked": [
+    "OpenAI MCP connection drawer reports Authorization unavailable with OAuth disabled; Connect does not begin authorization or display client/callback configuration.",
+    "OpenAI MCP Rescan attempted after verified domain; portal reports latest scan did not complete and has no discovered tools."
+  ],
+  "connectionInvestigation": "Production WorkOS CIMD and DCR are disabled. CIMD-only change and dedicated reviewer accounts await owner approval; neither changed.",
+  "lastRecheck": {
+    "date": "2026-10-06",
+    "pluginCommit": "91b481d7ec9247ba29f13b08ed78081e4536607a",
+    "scope": "Live public discovery, authenticated OpenAI/WorkOS/Vercel/Supabase inspection, approved staging-only CIMD enablement, read-only sandbox schema check, local package and synthetic MCP regressions. No deployment or grant.",
+    "portal": {
+      "url": "https://platform.openai.com/plugins/manage/plugin_asdk_app_6abda5a4005081918646fb59fb8cc71c?tab=mcp&version=appsub_6abda5a400808191833c695930b5c6ab&mcp=server%3Aabbelo",
+      "version": "0.1.0",
+      "reviewStatus": "Not submitted",
+      "publication": "Not published",
+      "metadata": "No Issues",
+      "skill": "Checks passed",
+      "domain": "Domain verified",
+      "authentication": "Unavailable",
+      "mcpConfiguration": "Configuration incomplete",
+      "toolFindings": 0,
+      "rescan": "Latest scan did not complete. No tools discovered.",
+      "connectionDrawer": "MCP URL and disabled OAuth selector only; no predefined client ID, secret, callback or CIMD document fields exposed.",
+      "otherManagementControls": "More plugin actions exposes Download draft ZIP and Delete plugin only.",
+      "reviewInformation": "Incomplete; country selector defaults to All supported countries. No values saved."
+    },
+    "publicDiscovery": {
+      "https://abbelo.com/mcp": {
+        "status": 401,
+        "wwwAuthenticate": "Bearer resource_metadata=\"https://abbelo.com/.well-known/oauth-protected-resource/mcp\", error=\"invalid_token\", error_description=\"Connect your Abbelo account again.\""
+      },
+      "https://abbelo.com/.well-known/oauth-protected-resource/mcp": {
+        "status": 200,
+        "resource": "https://abbelo.com/mcp",
+        "authorizationServers": [
+          "https://satisfying-gust-31.authkit.app"
+        ],
+        "scopes": [
+          "abbelo:read",
+          "abbelo:write"
+        ]
+      },
+      "https://abbelo.com/.well-known/oauth-protected-resource": {
+        "status": 404,
+        "interpretation": "Not itself a spec violation: challenge advertises valid /mcp metadata path."
+      },
+      "https://satisfying-gust-31.authkit.app/.well-known/oauth-authorization-server": {
+        "status": 200,
+        "S256": true,
+        "tokenEndpointAuthMethods": [
+          "none",
+          "client_secret_post",
+          "client_secret_basic"
+        ],
+        "CIMDAdvertised": false,
+        "DCRRegistrationEndpointAdvertised": false,
+        "issuerResponseIdentificationAdvertised": false,
+        "scopes": [
+          "email",
+          "offline_access",
+          "openid",
+          "profile"
+        ]
+      },
+      "https://satisfying-gust-31.authkit.app/.well-known/openid-configuration": {
+        "status": 200,
+        "codeChallengeMethodsSupportedPresent": false
+      }
+    },
+    "localValidation": {
+      "package": "passed",
+      "deterministicZip": "passed",
+      "zipSha256": "c3a0b1c9398d22273980bf31f937400a3d487dae66d0a2e9ad77738c85364418",
+      "submissionReadiness": "fails as designed; 17 recorded blockers",
+      "mcpFixtureSuite": "all 8 scripts passed",
+      "protocolVersions": [
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "fixtureProvenance": {
+        "sourceHead": "d73a017d670676d09b49ad502141fe0b921a9e17",
+        "existingUserChangesPresent": true,
+        "runFromTemporaryCopy": true,
+        "provesProductionOrHostAcceptance": false
+      },
+      "fullAppBuildRerun": false
+    },
+    "hypothesis": "Staging CIMD enabled and publicly advertised, but actual host identification, provider token shape and synthetic user consent remain untested. Not an established public-draft fix.",
+    "providerDashboard": "Signed in successfully on fresh inspection. Existing staging environment and Connect configuration verified read-only. Earlier sign-in rejections are historical and no longer a login blocker.",
+    "securityConfigurationChanged": true,
+    "credentialsCreated": false,
+    "oauthGrantsCreated": false,
+    "paidTestsPerformed": false,
+    "productionChanges": false,
+    "submittedForReview": false,
+    "published": false,
+    "remainingApprovals": [
+      "Production OAuth configuration only after staging proof",
+      "Dedicated synthetic reviewer identities and scoped account consent",
+      "Bounded paid session test budget",
+      "Country/commerce/policy and final legal attestations"
+    ],
+    "sources": [
+      "https://developers.openai.com/plugins/build/auth",
+      "https://workos.com/docs/authkit/mcp",
+      "https://workos.com/docs/reference/workos-connect/applications",
+      "https://workos.com/docs/authkit/environments",
+      "https://workos.com/docs/authkit/testing"
+    ],
+    "codeInspection": {
+      "source": "current GitHub main, fetched 2026-10-06",
+      "workosAdapterBlob": "a802f51e26895ccb07f697271c4f69d3e5392fcf",
+      "grantStoreBlob": "56edb33f62eec799f9f8e9deb1729f244a411585",
+      "initialClientAllowlist": false,
+      "exactClientConsentBinding": true,
+      "pkceAndScopeCeilingRequired": true,
+      "standaloneCompletionAlwaysSendsConsentOptions": true,
+      "firstPartyConfigurationCompatibility": "separate unverified blocker; do not remove grant claim or replay prior recovery"
+    },
+    "saferTest": {
+      "documented": "Existing WorkOS staging configured with separate Supabase Preview target; old deployed adapter matches current expiry schema for initial smoke only.",
+      "providerCimdAllowlist": "CIMD enabled after approval; separate DCR checkbox remains off. No initial per-client/domain restriction verified.",
+      "localEmulator": "No documented CIMD coverage; not real token/consent proof.",
+      "configured": true
+    },
+    "stagingInspection": {
+      "date": "2026-10-06",
+      "signedIn": true,
+      "project": "Abbelo's Project",
+      "environment": "Staging",
+      "environmentId": "environment_01M32YFM32Z2Q6A7CA1EP88EC2",
+      "url": "https://dashboard.workos.com/environment_01M32YFM32Z2Q6A7CA1EP88EC2/connect/configuration",
+      "cimdEnabled": false,
+      "dcrEnabled": false,
+      "enableControl": "Shared Enable button; not clicked; stop if CIMD cannot be selected separately",
+      "resource": "https://abbelo-git-codex-creator-payments-sandbox-abbeloapp.vercel.app/mcp",
+      "resourceIsDefault": true,
+      "externalSignInUri": "https://abbelo-git-codex-creator-payments-sandbox-abbeloapp.vercel.app/connect/mcp",
+      "manualApplication": {
+        "name": "Abbelo MCP staging test",
+        "applicationId": "app_01M3648H7KNPXRWVZRSY31785K",
+        "clientId": "client_01M3648H7JYA4EE2W23VDSW9K5",
+        "callback": "http://127.0.0.1:8894/callback",
+        "scopeCeiling": [
+          "abbelo:read",
+          "abbelo:write"
+        ],
+        "firstPartyAndPkceSettingsVisible": false
+      },
+      "databaseIsolation": "Current server/browser project targets not yet verified; public endpoints and historical receipts are insufficient",
+      "configurationChanged": false,
+      "credentialsCreated": false,
+      "grantsCreated": false,
+      "minimumProposedChange": "CIMD only in this staging environment; keep DCR disabled; no resource/default/login/client/callback/scope/production changes",
+      "proposedConsent": "Separate approval after database isolation verification; synthetic member; abbelo:read initially; refresh scope must be explicitly approved",
+      "screenshots": [
+        "workos-staging-connect-config.jpg",
+        "workos-staging-test-client.jpg"
+      ]
+    },
+    "stagingAfterApproval": {
+      "date": "2026-10-06",
+      "environmentId": "environment_01M32YFM32Z2Q6A7CA1EP88EC2",
+      "cimdEnabled": true,
+      "dcrEnabled": false,
+      "scope": "existing WorkOS staging only",
+      "approval": "Owner specifically approved staging CIMD only at action time through parent; no consent or production change included",
+      "resourceChanged": false,
+      "externalSignInUriChanged": false,
+      "clientOrCallbackChanged": false,
+      "credentialsCreated": false,
+      "grantsCreated": false,
+      "productionChanged": false,
+      "publicDiscovery": {
+        "staging": {
+          "url": "https://sympathetic-unknown-40-staging.authkit.app/.well-known/oauth-authorization-server",
+          "status": 200,
+          "issuer": "https://sympathetic-unknown-40-staging.authkit.app",
+          "client_id_metadata_document_supported": true,
+          "registration_endpoint": null,
+          "code_challenge_methods_supported": [
+            "S256"
+          ],
+          "token_endpoint_auth_methods_supported": [
+            "none",
+            "client_secret_post",
+            "client_secret_basic"
+          ]
+        },
+        "production": {
+          "url": "https://satisfying-gust-31.authkit.app/.well-known/oauth-authorization-server",
+          "status": 200,
+          "issuer": "https://satisfying-gust-31.authkit.app",
+          "client_id_metadata_document_supported": null,
+          "registration_endpoint": null,
+          "code_challenge_methods_supported": [
+            "S256"
+          ],
+          "token_endpoint_auth_methods_supported": [
+            "none",
+            "client_secret_post",
+            "client_secret_basic"
+          ]
+        }
+      },
+      "screenshot": "workos-staging-cimd-enabled.jpg"
+    },
+    "currentIsolation": {
+      "date": "2026-10-06",
+      "readOnly": true,
+      "vercel": {
+        "project": "abbeloapp/abbelo",
+        "sandbox": {
+          "deploymentId": "dpl_87G9inzEu72mHtzZnLUWKXUJoeow",
+          "url": "https://vercel.com/abbeloapp/abbelo/87G9inzEu72mHtzZnLUWKXUJoeow",
+          "commit": "3ad211e4a8551424207120d7f1a44b44bb1cc73b",
+          "branch": "codex/creator-payments-sandbox",
+          "alias": "https://abbelo-git-codex-creator-payments-sandbox-abbeloapp.vercel.app",
+          "status": "Ready",
+          "functionRegion": "iad1"
+        },
+        "production": {
+          "deploymentId": "dpl_EGyFYRN5VpEdpLvViXW84gzb8fCA",
+          "url": "https://vercel.com/abbeloapp/abbelo/EGyFYRN5VpEdpLvViXW84gzb8fCA",
+          "commit": "32cdb3780101eead0f1e83c409a845b84bb8e5e8",
+          "branch": "main",
+          "status": "Ready, Current",
+          "functionRegion": "iad1"
+        },
+        "currentProjectEnvironmentConfiguration": {
+          "sandboxBranch": "codex/creator-payments-sandbox",
+          "SUPABASE_URL": "https://nukwomvclaxavdmxzbvs.supabase.co",
+          "NEXT_PUBLIC_ABBELO_SUPABASE_URL": "https://nukwomvclaxavdmxzbvs.supabase.co",
+          "production_SUPABASE_URL": "https://apjgcwapxprihicahytd.supabase.co",
+          "sandboxServiceKey": "Separate Secret entry scoped to Preview / codex/creator-payments-sandbox, updated September14; value not read",
+          "note": "Current project scope verified; immutable deployment secret binding not independently revealed or tested"
+        }
+      },
+      "supabase": {
+        "sandbox": {
+          "projectRef": "nukwomvclaxavdmxzbvs",
+          "branch": "creator-payments-sandbox",
+          "type": "Preview",
+          "parentProductionRef": "apjgcwapxprihicahytd",
+          "primaryDatabaseRegion": "us-west-2",
+          "regionLabel": "West US (Oregon)",
+          "overviewStatus": "Unhealthy",
+          "schemaQueryStatus": "succeeded"
+        },
+        "production": {
+          "projectRef": "apjgcwapxprihicahytd",
+          "primaryDatabaseRegion": "us-west-2",
+          "regionLabel": "West US (Oregon)",
+          "overviewStatus": "Healthy"
+        }
+      },
+      "schemaRead": {
+        "project": "nukwomvclaxavdmxzbvs",
+        "query": "select is_nullable, column_default from information_schema.columns where table_schema = 'public' and table_name = 'mcp_grants' and column_name = 'expires_at';",
+        "rows": [
+          {
+            "is_nullable": "NO",
+            "column_default": "(clock_timestamp() + '30 days'::interval)"
+          }
+        ],
+        "interpretation": "Existing schema matches older sandbox grant adapter; initial CIMD smoke is not blocked by null-expiry mismatch. Does not validate production until-disconnect lifecycle."
+      },
+      "limitations": [
+        "No service-key values, token bodies or user rows read",
+        "Synthetic-only content and approved identity not verified in current DB",
+        "Sandbox Unhealthy component not identified from overview; metadata query succeeds",
+        "Initial sandbox handshake cannot prove current production consent text, diagnostics or until-disconnect lifecycle"
+      ],
+      "databaseOrDeploymentChanges": false,
+      "oauthConsentPerformed": false
+    },
+    "securityConfigurationScope": "Owner-approved CIMD only in existing WorkOS staging environment; DCR disabled and production unchanged"
+  }
+}

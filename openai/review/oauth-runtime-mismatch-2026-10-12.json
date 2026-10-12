@@ -1,0 +1,45 @@
+{
+  "captured_at": "2026-10-12T15:06:08.070Z",
+  "source": "Visible Chrome DevTools Network Response for OpenAI platform Connect",
+  "plugin_id": "plugin_asdk_app_6abda5a4005081918646fb59fb8cc71c",
+  "draft_id": "appsub_6abda5a400808191833c695930b5c6ab",
+  "runtime_version_id": "asdk_app_v_41691e2e6364819186d6356da7cee0cd",
+  "package_version": "0.1.2",
+  "expected_saved_config": {
+    "client_mode": "provided",
+    "client_id": "client_01M3JKJDVEWD5X2B368JK6XZ3Q",
+    "token_endpoint_auth_method": "none",
+    "default_scopes": [
+      "abbelo:read"
+    ]
+  },
+  "observed_authorization_request": {
+    "endpoint": "https://satisfying-gust-31.authkit.app/oauth2/authorize",
+    "client_id": "https://chatgpt.com/oauth/1y9f3YO8BNrS/client.json",
+    "scope": [
+      "openid",
+      "email",
+      "offline_access",
+      "abbelo:read",
+      "abbelo:write"
+    ],
+    "redirect_uri": "https://chatgpt.com/connector/oauth/1y9f3YO8BNrS",
+    "resource": "https://abbelo.com/mcp",
+    "response_type": "code",
+    "code_challenge_method": "S256"
+  },
+  "outcome": "Connect response inspected; pending sign-in canceled before Continue/authorization. Earlier 14:36:36Z attempt returned invalid_scope.",
+  "limitations": [
+    "Exact rejected individual scope unknown.",
+    "Internal cause of old registration reuse unconfirmed.",
+    "No new consent, provider configuration change or paid request."
+  ],
+  "omitted": [
+    "OAuth state",
+    "nonce",
+    "code challenge",
+    "cookies",
+    "request authorization headers",
+    "tokens"
+  ]
+}
