@@ -1,6 +1,29 @@
 # Launch status — October 11, 2026
 
-## Scope and verified package
+## Latest continuation — registered-client candidate
+
+The owner asked to continue on October 11. A new WorkOS reply at 10:08 PM Pacific gives no verified rejected scope, no live configuration diagnosis and no cause for the missing Default scopes control. Production Connect Configuration was inspected again: the control is still absent. No further support message was sent.
+
+OpenAI's current packaging documentation explicitly supports selecting an existing registered client in `mcp.json`. Candidate **0.1.2** now prepares that route:
+
+- Commit: `07408386dd551470ced4badae0f7258deb19b552`.
+- Existing manual ChatGPT client: `client_01M3JKJDVEWD5X2B368JK6XZ3Q`, public client / PKCE, `tokenEndpointAuthMethod: none`.
+- Initial `defaultScopes: ["abbelo:read"]`; provider OIDC discovery and explicit Abbelo Session consent remain in place.
+- The existing callback `https://chatgpt.com/connector/oauth/1y9f3YO8BNrS` remains **unmatched to the public draft**. Do not authorize against a guessed callback or overwrite the existing one.
+- This is prepared source only. No WorkOS settings, credentials, grants, production deployment or saved OpenAI registration changed.
+- Cloud package job and five negative OAuth-configuration cases passed: https://github.com/abbeloapp/abbelo-plugin/actions/runs/38207433424/job/114673929374
+- Deterministic inner ZIP SHA-256: `c1bef55c031351ce60b589ee0e961c63684a90ff4b39773c1ea788593b2213c4`.
+- Direct-upload artifact with exactly the six validated plugin files, including hidden compatibility metadata: https://github.com/abbeloapp/abbelo-plugin/actions/runs/38207433424/artifacts/11727479303
+- Portal artifact digest: `sha256:0e1872dcdbabf62f4f2509b36f448b2c3ebdadef356dbcfa62ce51299297bb49`.
+- The separate public-discovery job still fails. No check was bypassed, and the PR remains unmerged.
+- Chrome blocked the artifact download host `productionresultssa6.blob.core.windows.net` with `ERR_BLOCKED_BY_CLIENT`. The browser download operation returned no file path. No package was uploaded. Do not claim the draft has the new client configuration.
+- The existing public draft's **Reupload draft** dialog is open for handoff. It accepts a ZIP file, not an artifact URL.
+
+Next: get the verified portal artifact into the existing public draft, inspect the saved auth settings and exact callback, and resolve any client-registration lock before authorization. A callback change or new consent needs the appropriate concrete approval; do not reset security state as a shortcut. If provided-client registration is unavailable for this existing connection, preserve it and await WorkOS's account-specific fix. Existing acceptance, reviewer, recording, declarations, scan and publication gates below remain open.
+
+Sources: [OpenAI MCP auth packaging](https://developers.openai.com/plugins/build/plugins#configure-mcp-authentication), [OpenAI submission configuration](https://developers.openai.com/plugins/deploy/submission#configure-authentication-for-submission), [WorkOS scopes](https://workos.com/docs/authkit/connect/token-claims#configure-client-scopes).
+
+## Previous scope and verified package
 
 The owner authorized completing the public Abbelo plugin. Code and package builds were performed through GitHub cloud tools. The owner subsequently allowed a narrow exception to inspect the signed-in OpenAI and WorkOS settings in their browser. No local shell, deployment, production permission change, new consent grant, or paid session was used.
 
