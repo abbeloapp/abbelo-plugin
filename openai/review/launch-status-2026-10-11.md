@@ -43,12 +43,13 @@ Environment: `environment_01M32YFMPHV05ZNEQNFT31HNVQ`, Abbelo's Project, Product
 - Both inspected ChatGPT records use callback `https://chatgpt.com/connector/oauth/1y9f3YO8BNrS`; the CIMD client ID is `https://chatgpt.com/oauth/1y9f3YO8BNrS/client.json`. These records have not been matched to the public submission draft's current authorization request.
 - Connect Configuration and Authorization Configuration did not expose environment-default custom-scope controls.
 - WorkOS support's scope guidance describes CIMD defaults as support-managed and environment-wide. Account-specific diagnosis remains necessary; public metadata alone is insufficient.
-- A provider support follow-up must come from an authorized dashboard member. The existing support request and dashboard sign-in use different email identities. Do not publish private correspondence or send follow-ups without the owner's authorization.
+- The first inspected support thread used a different email identity from the dashboard. After the owner authorized sending from the dashboard member mailbox, inspection of that mailbox revealed later correspondence. Provider support had already reported enabling a team-level Default scopes control on October 7; the control is still absent from the current production Connect Configuration page after reloading. Treat this as a provider/UI discrepancy, not proof that defaults are configured.
+- The owner-authorized follow-up was sent on October 11 at 10:06 PM Pacific from the dashboard member mailbox to WorkOS support in the existing thread. Gmail sent-message search verified the new reply. It reports the missing control and asks for diagnosis and the exact scope proposal before changing production settings or grants. Private message bodies and mailbox identifiers are not copied into this public repository.
 - No WorkOS configuration, client, permission, credential, grant or account was changed.
 
 ## Remaining work
 
-1. Obtain account-specific WorkOS diagnosis through an authorized dashboard member, including the exact rejected scope and the proposed environment-default change. Explain the effect on existing/future clients, consents and refresh tokens before applying any change.
+1. Resolve the reported-but-missing Default scopes control with WorkOS, using the sent support follow-up. Obtain account-specific diagnosis including the exact rejected scope and proposed environment-default change. Explain the effect on existing/future clients, consents and refresh tokens before applying any change.
 2. Capture the public draft's actual authorization request and callback, including advertised OIDC scopes. Do not reuse a different plugin's callback or infer enabled client scopes from discovery alone.
 3. Preserve explicit local grants, account/client binding, PKCE, resource audience, expiry, revocation and Guide entitlements. Do not fix connection errors by weakening authorization.
 4. Reconnect and prove read-only access first. Then complete the documented bounded session/rejection cases, same-conversation results, refresh and revocation.
