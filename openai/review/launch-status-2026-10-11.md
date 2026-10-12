@@ -1,5 +1,15 @@
 # Launch status — October 11–12, 2026
 
+## October 12, 15:19 UTC — OpenAI support escalation confirmed
+
+The owner explicitly approved sending the prepared diagnostic report to OpenAI Support using the Abbelo account email. The report was sent through the official Help Center support chat and verified in its visible transcript. A follow-up clarified that this is the **public Apps/Plugins submission portal**, preserved separately consented session tools, and requested a human specialist's account-specific remediation proposal before registration/grant changes.
+
+The initial AI support response gave generic recreation and scope advice, without inspecting the registration. That is **not** an authoritative reset procedure or permission to delete/recreate the plugin, change domain verification, broaden defaults, or relabel write tools. After clarification, the owner-authorized escalation was confirmed by the visible status **Escalation requested** and a message saying the case was escalated to a support specialist, with replies also sent by email. No case number was exposed. No human diagnosis or fix is available yet.
+
+The approved original report remains preserved in `openai-oauth-support-draft-2026-10-12.md` as a historical draft; its earlier “not sent” header describes its state at preparation, superseded by this receipt. Do not resend or create a duplicate ticket. No raw HAR, token, cookie, secret or OAuth state was transmitted.
+
+Continue with the specialist's supported remediation once available, then verify the outgoing client/scope request before authorization. The public plugin is still unsubmitted/unpublished; authenticated discovery, acceptance, reviewer setup and remaining review gates are pending. No production configuration, permission, credential, paid request, deployment or merge changed during this escalation.
+
 ## October 12, 15:06 UTC — runtime client mismatch confirmed
 
 This receipt supersedes earlier uncertainty about the runtime client and requested scope set. The exact rejected individual scope remains unknown.
