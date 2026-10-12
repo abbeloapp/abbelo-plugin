@@ -1,5 +1,24 @@
 # Launch status — October 11–12, 2026
 
+## October 12, 15:06 UTC — runtime client mismatch confirmed
+
+This receipt supersedes earlier uncertainty about the runtime client and requested scope set. The exact rejected individual scope remains unknown.
+
+OpenAI's visible Connect network response for runtime version `asdk_app_v_41691e2e6364819186d6356da7cee0cd` returns an authorization URL using the **old CIMD client** `https://chatgpt.com/oauth/1y9f3YO8BNrS/client.json` with **openid email offline_access abbelo:read abbelo:write**. Its resource is `https://abbelo.com/mcp` and callback is `https://chatgpt.com/connector/oauth/1y9f3YO8BNrS`.
+
+This differs from the saved 0.1.2 settings: **provided** client `client_01M3JKJDVEWD5X2B368JK6XZ3Q`, authentication method **none**, initial scopes **abbelo:read**. The manual client is not the client used by this observed request; do not diagnose the manual client's scope permissions from this failure.
+
+- Evidence: [sanitized request comparison](oauth-runtime-mismatch-2026-10-12.json). The response was read through Chrome's visible Network UI, not hidden browser state or a private API call. State, nonce, challenge values, credentials and tokens are omitted.
+- The inspected Connect attempt was canceled before Continue or authorization. It establishes the outgoing request configuration, not a new provider rejection. The earlier 14:36:36 UTC callback remains the verified `invalid_scope` receipt.
+- The portal still shows **Not published**, **Not submitted**, **Configuration incomplete**, **Authorization required**, and no discovered tool findings.
+- The inspected MCP selector has only `abbelo`; the plugin menu offers Download draft ZIP and Delete plugin. No supported registration reset control was found. Do not delete the plugin, replace the domain challenge, broaden WorkOS defaults or weaken API scope checks as a workaround.
+- OpenAI documents that existing client registration can lock credential changes after upload. This is consistent with the observed mismatch; the internal mechanism remains unverified.
+- No new support message, permission/credential change, paid request, production deployment or merge occurred.
+
+Next: ask OpenAI for the supported way to reset/rebind this existing draft's MCP OAuth registration to the saved provided client, preserving plugin identity and domain verification. A support report is prepared in [openai-oauth-support-draft-2026-10-12.md](openai-oauth-support-draft-2026-10-12.md); it has **not been sent**. Obtain owner authorization for that new recipient. After a supported fix, verify the actual outbound client/scopes before sign-in; complete authenticated tool discovery, acceptance cases, reviewer setup and submission gates. Do not rebuild/reupload the unchanged package or repeat failed authorizations without a relevant state change.
+
+Sources: [OpenAI saved-registration limitation](https://developers.openai.com/plugins/deploy/submission#configure-authentication-for-submission), [OpenAI troubleshooting escalation](https://developers.openai.com/plugins/deploy/troubleshooting#when-to-escalate).
+
 ## October 12 continuation — 0.1.2 uploaded; current invalid_scope captured
 
 The owner explicitly asked the agent to open Chrome and finish the upload. The public draft now contains **0.1.2**. This supersedes the earlier notes that the package was not uploaded.
