@@ -1,4 +1,27 @@
-# Launch status — October 11, 2026
+# Launch status — October 11–12, 2026
+
+## October 12 continuation — 0.1.2 uploaded; current invalid_scope captured
+
+The owner explicitly asked the agent to open Chrome and finish the upload. The public draft now contains **0.1.2**. This supersedes the earlier notes that the package was not uploaded.
+
+### Verified actions and results
+
+- The GitHub Actions browser artifact URL still hit `ERR_BLOCKED_BY_CLIENT`. No browser security setting or warning was bypassed. A dedicated GitHub `download_workflow_artifact` connector retrieved artifact `11727479303`; its returned file was downloaded through the supported browser download event and uploaded through the OpenAI file chooser.
+- Uploaded candidate: commit `07408386dd551470ced4badae0f7258deb19b552`, direct portal artifact digest `sha256:0e1872dcdbabf62f4f2509b36f448b2c3ebdadef356dbcfa62ce51299297bb49`. No local shell or package build ran.
+- Existing public draft: `plugin_asdk_app_6abda5a4005081918646fb59fb8cc71c`; draft version ID `appsub_6abda5a400808191833c695930b5c6ab`.
+- Portal displays **Metadata & skills version 0.1.2 · Draft**, metadata **No findings**, and skill **Checks passed**.
+- MCP saved settings visibly contain `client.mode: provided`, `clientId: client_01M3JKJDVEWD5X2B368JK6XZ3Q`, `tokenEndpointAuthMethod: none`, and `defaultScopes: [abbelo:read]`. Domain remains verified.
+- One Connect/Continue attempt returned without authorization. A focused browser-history lookup captured the actual callback at **2026-10-12 14:36:36 UTC / 07:36:36 Pacific**: `https://chatgpt.com/connector/oauth/1y9f3YO8BNrS?error=invalid_scope` (OAuth state omitted). It relayed to the OpenAI platform at 14:36:38 UTC.
+- This proves a **current invalid_scope response** and matches the public draft flow's callback to the WorkOS manual client. It does **not** expose the full outbound authorization request, actual runtime client ID, or rejected scope. Saved package settings alone do not prove an older client registration was replaced.
+- Production WorkOS manual ChatGPT client still has `abbelo:read` and `abbelo:write`, and the exact matching callback. No changes were made.
+- WorkOS Connect Configuration and its Manage dialog still expose CIMD enabled, DCR disabled, the MCP resource and external sign-in URI; **no Default scopes control**. The Events page has no event for this failed attempt; it does not provide the missing authorization-request diagnosis.
+- Portal reviewer setup offers username/password or a dedicated magic-link/email-code reviewer account. No reviewer account, grant, country setting, legal declaration or credential was created/saved. Do not use a real production account as the reviewer fixture.
+- Status remains **Not published**, **Not submitted**, **Configuration incomplete**, **Authorization required**, and no discovered tool findings. Metadata/skill success is not MCP scan success.
+- No new support email, WorkOS mutation, consent grant, paid request, merge or production deployment occurred.
+
+### Continue from here
+
+Do not rebuild or reupload 0.1.2 merely because older notes say it is absent. Obtain the failed authorization request's runtime client ID and exact rejected scopes from the provider/OpenAI diagnostics or account-specific support. Resolve any saved-registration mismatch through a supported flow; do not delete clients, relax API checks or broaden environment defaults speculatively. Once authorization is fixed, complete authenticated acceptance, the dedicated reviewer fixture, review materials/declarations and MCP scans, then submit and publish after approval. The previous cloud public-discovery failure remains unresolved and must not be bypassed.
 
 ## Latest continuation — registered-client candidate
 
