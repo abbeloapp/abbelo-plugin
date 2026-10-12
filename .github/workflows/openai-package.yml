@@ -68,6 +68,40 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      - name: Verify OAuth package rejects broadened or secret-bearing configuration
+        run: |
+          python - <<'PY'
+          import copy
+          import importlib.util
+          import json
+          spec = importlib.util.spec_from_file_location('package', 'scripts/build-openai.py')
+          package = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(package)
+          original = json.loads((package.ROOT/'mcp.json').read_text())
+          package.validate_mcp(original)
+          for mutation in ['secret', 'write_default', 'wrong_client', 'no_auth', 'headers']:
+              invalid = copy.deepcopy(original)
+              server = invalid['mcpServers']['abbelo']
+              auth = server['extensions']['com.openai']['auth']
+              if mutation == 'secret': auth['client']['clientSecret'] = 'forbidden-test-value'
+              elif mutation == 'write_default': auth['defaultScopes'].append('abbelo:write')
+              elif mutation == 'wrong_client': auth['client']['clientId'] = 'another-client'
+              elif mutation == 'no_auth': auth['type'] = 'none'
+              elif mutation == 'headers': server['headers'] = {'Authorization': 'forbidden-test-value'}
+              try:
+                  package.validate_mcp(invalid)
+              except ValueError:
+                  continue
+              raise AssertionError('Accepted forbidden mutation: ' + mutation)
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: abbelo-openai-portal-${{ github.sha }}
+          path: openai/abbelo/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
+
   public-discovery:
     runs-on: ubuntu-latest
     timeout-minutes: 3

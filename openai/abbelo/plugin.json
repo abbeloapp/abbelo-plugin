@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "abbelo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Find accessible Guides, practice with Abbelo and continue your saved conversations.",
   "author": {
     "name": "Abbelo",
@@ -100,7 +100,7 @@
         }
       },
       "publication": {
-        "release_notes": "Updated saved-conversation links for Abbelo Chats and refreshed the OpenAI package. Uses the existing Abbelo logo, account permissions and credit controls. Public availability requires completed connection tests and OpenAI review."
+        "release_notes": "Configures the existing registered ChatGPT public OAuth client with initial read access. Retains Abbelo account permissions, explicit Session consent, credit controls and branding. Public availability requires verified callback registration, connection tests and OpenAI review."
       }
     }
   }

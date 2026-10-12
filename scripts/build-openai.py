@@ -21,6 +21,19 @@ def require(condition, message):
     if not condition:
         raise ValueError(message)
 
+EXPECTED_MCP_SERVERS = {"abbelo":{"type":"streamable-http","url":"https://abbelo.com/mcp","extensions":{"com.openai":{"auth":{"type":"oauth","client":{"mode":"provided","clientId":"client_01M3JKJDVEWD5X2B368JK6XZ3Q","tokenEndpointAuthMethod":"none"},"defaultScopes":["abbelo:read"]}}}}}
+
+def validate_mcp(mcp):
+    # The vendored portable schema predates OpenAI's documented auth extension.
+    # Validate its portable projection, then the exact non-secret OpenAI contract.
+    require(mcp.get('mcpServers') == EXPECTED_MCP_SERVERS,
+            'Expected the registered ChatGPT public client, initial read scope, and no secrets or headers')
+    portable = json.loads(json.dumps(mcp))
+    portable['mcpServers']['abbelo'].pop('extensions')
+    schema = json.loads((REPO/'openai/schemas/mcp.schema.json').read_text())
+    jsonschema.Draft202012Validator.check_schema(schema)
+    jsonschema.Draft202012Validator(schema).validate(portable)
+
 def validate():
     actual = sorted(p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file())
     require(actual == sorted(FILES), 'Unexpected or missing package files')
@@ -30,11 +43,11 @@ def validate():
         require(ROOT in path.resolve().parents, 'Path must stay inside package')
     manifest = json.loads((ROOT/'plugin.json').read_text())
     mcp = json.loads((ROOT/'mcp.json').read_text())
-    for kind, value in [('plugin',manifest),('mcp',mcp)]:
+    for kind, value in [('plugin',manifest)]:
         schema = json.loads((REPO/f'openai/schemas/{kind}.schema.json').read_text())
         jsonschema.Draft202012Validator.check_schema(schema)
         jsonschema.Draft202012Validator(schema).validate(value)
-    require(mcp['mcpServers'] == {'abbelo':{'type':'streamable-http','url':'https://abbelo.com/mcp'}}, 'One remote endpoint; no variables, headers, auth secrets or commands')
+    validate_mcp(mcp)
     require(re.fullmatch(r'\d+\.\d+\.\d+',manifest['version']), 'Version must be a release semver')
     extension = manifest['extensions']['com.openai']
     require(set(extension) <= {'interface','review','publication'}, 'Unexpected OpenAI extension')

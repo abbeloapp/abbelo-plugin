@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-11",
-  "status": "Candidate 0.1.1 cloud package build passed. Signed-in portal confirms public draft is not submitted or published and MCP authorization remains incomplete. Production WorkOS inspected; account-specific scope diagnosis and successful connection are still required. No new consent or paid acceptance run completed.",
+  "status": "Candidate 0.1.2 prepares the documented provided-client route using the existing ChatGPT public client and initial read scope. No production client or consent changed. Exact public-draft callback, saved portal registration, live authorization and all existing release gates remain unverified.",
   "gates": {
     "publisher_identity_confirmed_and_verified": true,
     "publisher_country_confirmed": false,

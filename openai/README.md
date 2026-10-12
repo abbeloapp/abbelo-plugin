@@ -1,6 +1,6 @@
 # Abbelo for OpenAI: submission candidate
 
-Candidate **0.1.1**, updated October 11, 2026. Public submission, approval and publication are not verified. The root Cursor/Grok package is separate and unchanged.
+Candidate **0.1.2**, updated October 11, 2026. Public submission, approval and publication are not verified. The root Cursor/Grok package is separate and unchanged.
 
 ## Package
 
@@ -14,7 +14,7 @@ The screenshot supplied October 11 shows an installed **1.0.0** plugin with a ge
 
 The [OpenAI package workflow](../.github/workflows/openai-package.yml) validates the package, builds it twice, compares the ZIP bytes, and uploads the ZIP, SHA-256 and readiness report as one artifact. A separate job reads public OAuth discovery without signing in or sending AI requests.
 
-Download the artifact for the exact reviewed commit. Only `abbelo-openai-candidate.zip` goes to the OpenAI plugin portal. A green package build does **not** mean authentication works, acceptance passed, or the plugin is approved.
+Download the artifact for the exact reviewed commit. The `abbelo-openai-portal-<commit>` artifact contains exactly the six validated plugin files, including the compatibility dot-directory; its downloaded ZIP can go directly to the portal. The other artifact is a receipt bundle: only its inner `abbelo-openai-candidate.zip` is a plugin package. A green package build does **not** mean authentication works, acceptance passed, or the plugin is approved.
 
 The release guard refuses a submission-ready result while evidence is missing. Existing historical receipts are preserved in `review/verification.json`; the latest handoff is [launch status](review/launch-status-2026-10-11.md).
 
@@ -37,3 +37,15 @@ The last command must fail until every recorded gate has evidence. It never subm
 5. Submit the completed package for OpenAI review, then publish after approval. The owner's request to finish and go live authorizes this sequence; do not ask again for generic submission/publication permission. Missing factual declarations still require the owner's answers.
 
 Schema provenance is in [requirements](review/requirements.md). This package does not change production authentication, existing provider clients or billing.
+
+## Registered-client candidate 0.1.2
+
+The public draft's current automatic registration cannot complete authorization. WorkOS's October 11 reply still provides no account-specific fix or restored Default scopes control. OpenAI documents advanced OAuth configuration in each MCP server's `extensions["com.openai"].auth`, not an editable portal field.
+
+This candidate selects the existing manual ChatGPT public client, uses `tokenEndpointAuthMethod: none` and starts with `defaultScopes: ["abbelo:read"]`. It does not remove identity scopes from provider discovery or turn off OIDC, PKCE, local grants, resource checks or user consent. Write scope and paid Session permission still require their separate user-approved flow. This is a candidate configuration, not evidence of compatibility.
+
+The existing WorkOS registration currently contains callback `https://chatgpt.com/connector/oauth/1y9f3YO8BNrS`; it is **not yet matched to the public draft**. After staging the package in the existing unpublished draft, inspect its saved client configuration and exact callback. Stop before authorization if the callback differs. Do not overwrite this client's existing callback, switch credentials silently, create a new client, or reset a locked OpenAI registration to force the candidate through.
+
+The bundled portable MCP schema is retained unchanged. Validation checks the portable projection against it and separately checks the exact documented OpenAI auth contract; cloud negative cases reject secrets, headers, another client, no authentication and default write scope. No runtime client settings are modified by building this package.
+
+Sources: [OpenAI MCP auth packaging](https://developers.openai.com/plugins/build/plugins#configure-mcp-authentication), [OpenAI submission configuration](https://developers.openai.com/plugins/deploy/submission#configure-authentication-for-submission), [WorkOS client scopes](https://workos.com/docs/authkit/connect/token-claims#configure-client-scopes).

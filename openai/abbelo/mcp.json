@@ -3,7 +3,22 @@
   "mcpServers": {
     "abbelo": {
       "type": "streamable-http",
-      "url": "https://abbelo.com/mcp"
+      "url": "https://abbelo.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "provided",
+              "clientId": "client_01M3JKJDVEWD5X2B368JK6XZ3Q",
+              "tokenEndpointAuthMethod": "none"
+            },
+            "defaultScopes": [
+              "abbelo:read"
+            ]
+          }
+        }
+      }
     }
   }
 }
