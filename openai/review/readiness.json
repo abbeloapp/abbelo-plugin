@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-11",
-  "status": "OpenAI package refreshed for cloud validation; current connected app requires reauthentication. Earlier portal and OAuth receipts are historical; authenticated acceptance and public publication are not verified.",
+  "status": "Candidate 0.1.1 cloud package build passed. Signed-in portal confirms public draft is not submitted or published and MCP authorization remains incomplete. Production WorkOS inspected; account-specific scope diagnosis and successful connection are still required. No new consent or paid acceptance run completed.",
   "gates": {
     "publisher_identity_confirmed_and_verified": true,
     "publisher_country_confirmed": false,

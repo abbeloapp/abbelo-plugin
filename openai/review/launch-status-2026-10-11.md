@@ -1,36 +1,60 @@
 # Launch status — October 11, 2026
 
-## Scope and evidence
+## Scope and verified package
 
-The owner requested completion of the public Abbelo plugin and required cloud tools instead of controlling their computer. No local shell or browser is needed for the GitHub package build.
+The owner authorized completing the public Abbelo plugin. Code and package builds were performed through GitHub cloud tools. The owner subsequently allowed a narrow exception to inspect the signed-in OpenAI and WorkOS settings in their browser. No local shell, deployment, production permission change, new consent grant, or paid session was used.
 
-- Existing package PR: https://github.com/abbeloapp/abbelo-plugin/pull/1
-- Public submission draft recorded in previous receipts: `plugin_asdk_app_6abda5a4005081918646fb59fb8cc71c`, package 0.1.0. Its current portal state has not been read in this pass.
-- The owner's screenshot shows an installed 1.0.0 plugin with a generic icon. Its identity has not been matched to the public draft. Do not overwrite a different listing or downgrade its version.
-- Read-only `abbelo_get_connection` returned `UNAUTHORIZED` and requested reauthentication. This does not establish the cause of the earlier public-draft OAuth failure.
-- The separate connection investigation reports an October 8 WorkOS support reply about `invalid_scope` before consent, production CIMD enabled and environment-level scope defaults. This is contextual evidence, not a fresh provider configuration read. Exact rejected scopes and their impact remain unverified here.
-- No authenticated acceptance cases or paid session requests were run in this pass.
-- A recording exists on `review-demo-2026-10-06` at `review-assets/abbelo-review-walkthrough.mp4`. Its contents and reviewer suitability were not verified in this pass. Preserve it.
-- GitHub and service connectors are available. No connected cloud tool exposes WorkOS Connect administration or OpenAI plugin draft upload/submission.
+- Existing draft PR: https://github.com/abbeloapp/abbelo-plugin/pull/1
+- Verified package commit: `7c9e0ac36c3cae00a30078614e8df3b963e4db35`
+- Package validation/build: https://github.com/abbeloapp/abbelo-plugin/actions/runs/38204893232
+- Candidate artifact: https://github.com/abbeloapp/abbelo-plugin/actions/runs/38204893232/artifacts/11726947433
+- Inner ZIP SHA-256: `8a4a75fe8f0f1213e06c377ae9879419f2a8945fc1af3e01c307099e7d7a3e89`
+- Six-file ZIP validation, compatibility manifest validation, reproducibility and integrity checks passed. The submission guard correctly remained false.
+- Public-discovery consistency check failed because authorization-server metadata does not advertise the custom Abbelo scopes. This is not proof that a particular client cannot request them.
+- Public discovery evidence: https://github.com/abbeloapp/abbelo-plugin/actions/runs/38204893232/artifacts/11727150990
 
-## Prepared package
+Candidate 0.1.1 retains the existing white-backed Abbelo logo and updates saved links to `/chat?conversation=<id>`. App source at `83172d1e75c04bef6f3f293463b19d05813f41f5` routes `/chat` through HomeWorkspace, which handles the saved work-conversation ID. The root Cursor/Grok package is unchanged.
 
-Candidate 0.1.1 retains the existing white-backed Abbelo logo and updates saved links to `/chat?conversation=<id>`. The app source at `83172d1e75c04bef6f3f293463b19d05813f41f5` routes `/chat` through HomeWorkspace, which handles the saved work-conversation ID. The legacy `/home` route is retained by the app, not removed by this package.
+## OpenAI portal inspection
 
-The GitHub workflow builds a reproducible six-file ZIP and keeps package validation separate from submission readiness. Public discovery checks inspect only fixed HTTPS metadata URLs and the unauthenticated MCP challenge. They cannot prove client scope entitlement, consent, refresh, private tool access, or OpenAI approval.
+Observed October 11 Pacific / October 12 UTC:
 
-## Next required connection evidence
+- Public submission draft: `plugin_asdk_app_6abda5a4005081918646fb59fb8cc71c`.
+- Existing draft version ID: `appsub_6abda5a400808191833c695930b5c6ab`.
+- Publication: **Not published**. Review: **Not submitted**. MCP configuration: **Configuration incomplete**.
+- Domain verification passed. MCP authorization is required. No tool findings are available.
+- Server configuration remains streamable HTTP at `https://abbelo.com/mcp`, with empty custom headers and OAuth.
+- The setup connection flow returned without completing authorization. The separate scan connection flow reported: **Could not confirm the connection. Refresh status before trying again.**
+- No consent screen was approved. The full current authorization request, requested scope list and public-draft callback were not exposed in the inspected UI. Do not invent those details or equate the generic current failure with a verified new `invalid_scope` error.
+- Browser tab metadata identifies the installed plugin separately as `plugin_asdk_app_6ac55feee6e4819180f38781a0773d54`. The owner's screenshot shows installed version 1.0.0. It must not be overwritten as though it were the public draft.
+- The current read-only Abbelo connector returned `UNAUTHORIZED` and requested reauthentication.
 
-1. Match the exact plugin ID and draft version, then inspect its current MCP connection error.
-2. Capture the actual authorization request's issuer, client metadata URL/client ID, redirect URI and requested scope names. Keep tokens, authorization codes, state values and PKCE material out of source and support notes.
-3. In the matching WorkOS environment, verify which requested scopes the specific registration mode permits. OpenAI requests advertised OIDC scopes by default, so checking only `abbelo:read` and `abbelo:write` is insufficient. Do not infer enabled client scopes from discovery alone.
-4. Prepare any necessary environment-wide scope change with its precise impact before applying it. Preserve Abbelo's explicit local grants, account/client binding, PKCE, resource audience checks and revocation.
-5. Reconnect and prove read-only access first. Then complete the documented bounded session and rejection cases, same-conversation results, refresh and revocation.
+## Production WorkOS inspection
 
-Never fix `invalid_scope` by disabling authorization, widening local grants, advertising false issuer capabilities or reusing an unrelated callback.
+Environment: `environment_01M32YFMPHV05ZNEQNFT31HNVQ`, Abbelo's Project, Production.
 
-## Final portal work
+- Client ID Metadata Document registration: enabled.
+- Dynamic Client Registration: disabled.
+- Default MCP resource: `https://abbelo.com/mcp`.
+- External sign-in URI: `https://abbelo.com/connect/mcp`.
+- Both permissions exist in Authorization: `abbelo:read` and `abbelo:write`.
+- Manual ChatGPT application `app_01M3JKJDVEPY8KRDHQNTA1X0Y3` has both custom scopes assigned.
+- CIMD ChatGPT application `app_01M4BM3RMB00RP7ENQZMJYQGR5` has no editable scope section.
+- Both inspected ChatGPT records use callback `https://chatgpt.com/connector/oauth/1y9f3YO8BNrS`; the CIMD client ID is `https://chatgpt.com/oauth/1y9f3YO8BNrS/client.json`. These records have not been matched to the public submission draft's current authorization request.
+- Connect Configuration and Authorization Configuration did not expose environment-default custom-scope controls.
+- WorkOS support's scope guidance describes CIMD defaults as support-managed and environment-wide. Account-specific diagnosis remains necessary; public metadata alone is insufficient.
+- A provider support follow-up must come from an authorized dashboard member. The existing support request and dashboard sign-in use different email identities. Do not publish private correspondence or send follow-ups without the owner's authorization.
+- No WorkOS configuration, client, permission, credential, grant or account was changed.
 
-After connection and acceptance pass, upload the verified package to the matched existing listing, review the recording, supply the real demo URL and reviewer fixture, complete countries/commerce/publisher declarations and scans, submit for review, then publish after OpenAI approval. The owner has authorized finishing the public launch. Unknown legal facts and missing admin access remain factual blockers, not a reason to invent a declaration.
+## Remaining work
 
-Sources: [OpenAI authentication](https://developers.openai.com/plugins/build/auth), [OpenAI submission](https://developers.openai.com/plugins/deploy/submission), [WorkOS MCP](https://workos.com/docs/authkit/mcp).
+1. Obtain account-specific WorkOS diagnosis through an authorized dashboard member, including the exact rejected scope and the proposed environment-default change. Explain the effect on existing/future clients, consents and refresh tokens before applying any change.
+2. Capture the public draft's actual authorization request and callback, including advertised OIDC scopes. Do not reuse a different plugin's callback or infer enabled client scopes from discovery alone.
+3. Preserve explicit local grants, account/client binding, PKCE, resource audience, expiry, revocation and Guide entitlements. Do not fix connection errors by weakening authorization.
+4. Reconnect and prove read-only access first. Then complete the documented bounded session/rejection cases, same-conversation results, refresh and revocation.
+5. Review the existing recording on `review-demo-2026-10-06` at `review-assets/abbelo-review-walkthrough.mp4`; it exists but was not validated in this pass. Preserve it.
+6. Upload the verified package to the matched listing, supply the real reviewer fixture and demo, complete countries/commerce/publisher declarations and scans, and submit for OpenAI review. Publish after approval.
+
+The package has not been uploaded, merged, submitted, approved or publicly published in this pass. No authenticated acceptance cases or paid requests were run. Unknown legal facts and unresolved access must not be marked as completed.
+
+Sources: [OpenAI authentication](https://developers.openai.com/plugins/build/auth), [OpenAI submission](https://developers.openai.com/plugins/deploy/submission), [WorkOS scope configuration](https://workos.com/docs/authkit/connect/token-claims#configure-client-scopes).
