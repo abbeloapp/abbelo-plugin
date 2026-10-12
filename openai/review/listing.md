@@ -11,7 +11,7 @@ Use your Abbelo Guides and saved work in ChatGPT. Find Guides available to your 
 
 Connect your own Abbelo account. Choose read access to find work and read saved results, or explicitly allow sessions to send messages and save results. Only sending a session message uses Abbelo AI credits. Connecting, finding Guides, starting an empty conversation and reading results do not.
 
-Your Guide access restrictions still apply. Results are saved in the same conversation in Abbelo Home. Disconnect anytime in Abbelo Settings. The plugin cannot purchase Guides, buy credits or change billing.
+Your Guide access restrictions still apply. Results are saved in the same conversation in Abbelo. Disconnect anytime in Abbelo Settings. The plugin cannot purchase Guides, buy credits or change billing.
 
 ## Public links
 
@@ -46,7 +46,7 @@ Prompt: Let Abbelo run sessions after I approve that permission. Use the communi
 
 Expected tools: abbelo_get_connection, abbelo_find_work, abbelo_start_conversation
 
-Expected outcome: If write permission is missing, request an explicit reconnect with session permission and explain credit use. Only after approval create the conversation with the returned Guide ID and a stable request ID. Return its saved ID and Abbelo Home link. Creating the empty conversation spends no AI credits.
+Expected outcome: If write permission is missing, request an explicit reconnect with session permission and explain credit use. Only after approval create the conversation with the returned Guide ID and a stable request ID. Return its saved ID and Abbelo link. Creating the empty conversation spends no AI credits.
 
 Observed outcome: NOT RUN.
 
@@ -56,7 +56,7 @@ Prompt: In Review communication practice, send Abbelo: Help me practice explaini
 
 Expected tools: abbelo_get_connection, abbelo_find_work, abbelo_continue_session, abbelo_get_run, abbelo_get_conversation
 
-Expected outcome: Use the existing conversation ID. Pass the exact approved message as member_message with one stable request ID. Only continue_session admits AI work. Poll queued or running status without another submission. Show a reply only after completion, attribute it to Abbelo and link the same Home conversation. If blocked or failed, report that status without inventing a result or submitting another paid request.
+Expected outcome: Use the existing conversation ID. Pass the exact approved message as member_message with one stable request ID. Only continue_session admits AI work. Poll queued or running status without another submission. Show a reply only after completion, attribute it to Abbelo and link the same saved conversation. If blocked or failed, report that status without inventing a result or submitting another paid request.
 
 Observed outcome: NOT RUN.
 
@@ -66,7 +66,7 @@ Prompt: Continue Review communication practice. Send Abbelo: Here is my attempt:
 
 Expected tools: abbelo_get_connection, abbelo_find_work, abbelo_get_conversation, abbelo_continue_session, abbelo_get_run
 
-Expected outcome: Load the authorized saved conversation and reuse its ID. Send one new message with a new request ID after the stated approval. Preserve the Guide context, poll this Run and confirm the new reply appears in the same Abbelo Home conversation.
+Expected outcome: Load the authorized saved conversation and reuse its ID. Send one new message with a new request ID after the stated approval. Preserve the Guide context, poll this Run and confirm the new reply appears in the same Abbelo conversation.
 
 Observed outcome: NOT RUN.
 
@@ -76,7 +76,7 @@ Prompt: Show me the last saved reply in Review communication practice and where 
 
 Expected tools: abbelo_get_connection, abbelo_find_work, abbelo_get_conversation
 
-Expected outcome: Read the correct account’s saved conversation and bounded history, paginating if needed. Display the saved reply and exact Home conversation link. Do not call start_conversation or continue_session, and do not spend AI credits.
+Expected outcome: Read the correct account’s saved conversation and bounded history, paginating if needed. Display the saved reply and exact saved-conversation link. Do not call start_conversation or continue_session, and do not spend AI credits.
 
 Observed outcome: NOT RUN.
 

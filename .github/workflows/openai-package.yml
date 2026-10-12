@@ -1,0 +1,91 @@
+name: OpenAI plugin package
+
+on:
+  pull_request:
+    paths:
+      - 'openai/**'
+      - 'scripts/build-openai.py'
+      - 'scripts/check-openai-discovery.py'
+      - 'assets/abbelo.png'
+      - '.github/workflows/openai-package.yml'
+  push:
+    branches: [main, codex/openai-submission-package-20260930]
+    paths:
+      - 'openai/**'
+      - 'scripts/build-openai.py'
+      - 'scripts/check-openai-discovery.py'
+      - 'assets/abbelo.png'
+      - '.github/workflows/openai-package.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Install validation dependencies
+        run: python -m pip install -r openai/requirements.txt
+      - name: Validate and build twice
+        run: |
+          mkdir -p dist
+          python scripts/build-openai.py --output dist/abbelo-openai-candidate.zip > dist/package-report.json
+          python scripts/build-openai.py --output "${RUNNER_TEMP}/abbelo-openai-repeat.zip" > "${RUNNER_TEMP}/repeat-report.json"
+          cmp dist/abbelo-openai-candidate.zip "${RUNNER_TEMP}/abbelo-openai-repeat.zip"
+          sha256sum dist/abbelo-openai-candidate.zip > dist/SHA256SUMS
+          cat dist/package-report.json
+      - name: Check release guard agrees with readiness report
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+          report = json.loads(Path('dist/package-report.json').read_text())
+          result = subprocess.run(['python', 'scripts/build-openai.py', '--require-submission-ready'], capture_output=True, text=True)
+          assert (result.returncode == 0) == report['submissionReady'], 'Release guard and report disagree'
+          if not report['submissionReady']:
+              assert 'Submission blocked:' in result.stderr, 'Release guard failed for an unexpected reason'
+          with Path(__import__('os').environ['GITHUB_STEP_SUMMARY']).open('a') as summary:
+              summary.write('## OpenAI package\n\nSchema, branding, archive integrity and reproducible build: **passed**.\n\n')
+              summary.write('Submission ready: **' + str(report['submissionReady']).lower() + '**.\n\n')
+              summary.write('ZIP SHA-256: `' + report['sha256'] + '`\n\n')
+              for blocker in report['blockers']:
+                  summary.write('- ' + blocker + '\n')
+              summary.write('\nThis build does not submit or publish the plugin.\n')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: abbelo-openai-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 30
+
+  public-discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Inspect public OAuth discovery without signing in
+        run: |
+          mkdir -p discovery
+          python3 scripts/check-openai-discovery.py > discovery/public-discovery.json
+      - name: Show discovery evidence
+        if: always()
+        run: cat discovery/public-discovery.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: abbelo-discovery-${{ github.sha }}
+          path: discovery/
+          if-no-files-found: error
+          retention-days: 30

@@ -1,38 +1,39 @@
 # Abbelo for OpenAI: submission candidate
 
-Prepared September 30, 2026. **Not submitted, approved, published, or verified in ChatGPT/dots.** The candidate is a separate package. The repository’s root Cursor manifest, MCP configuration, workflow skill and logo remain unchanged.
+Candidate **0.1.1**, updated October 11, 2026. Public submission, approval and publication are not verified. The root Cursor/Grok package is separate and unchanged.
 
-## What is included
+## Package
 
-- `abbelo/plugin.json`: portable Agent Plugins 1.0.0 manifest, OpenAI listing and exactly five positive/three negative review cases.
-- `abbelo/mcp.json`: the existing `https://abbelo.com/mcp` endpoint using Streamable HTTP. No Cursor variable, app reference, hooks, local command, credential or authorization header.
-- `abbelo/skills/abbelo/SKILL.md`: adapted existing workflow, explicit permissions and credit approval, same-conversation results, exact retries and account/Guide boundaries.
-- `abbelo/assets/abbelo.png`: byte-identical existing Abbelo artwork.
-- `abbelo/.codex-plugin/plugin.json`: derived compatibility metadata for older Codex loaders. The portable root and inline `extensions.com.openai` are authoritative in the current public importer. Compatibility metadata omits the newer support field; the authoritative listing includes it. The builder checks drift.
-- `review/`: operator-only preparation documents and unresolved gates, excluded from the distributable ZIP. Never put reviewer credentials here.
+The portable `abbelo/plugin.json` includes the OpenAI listing, correct Abbelo logo, starter prompts, and five positive/three negative review cases. `abbelo/mcp.json` connects to `https://abbelo.com/mcp`. The skill uses account permissions, approved session messages, exact request retries, and saved conversation links.
 
-OpenAI Business verification now shows the approved identity **Business — Abbelo**. The draft uses that identity and its matching `developerName`. Country targeting and commerce declarations remain omitted until the owner confirms them. No fabricated demo URL is present.
+The compatibility manifest at `abbelo/.codex-plugin/plugin.json` is derived from the portable manifest. Review documents, readiness records and credentials are excluded from the six-file ZIP.
 
-## Rebuild and validate
+The screenshot supplied October 11 shows an installed **1.0.0** plugin with a generic icon and older read-only description. The known public submission draft is **0.1.0**. Match the plugin identifier in the portal before uploading this candidate; do not assume the installed plugin and public draft are the same listing. If updating an existing 1.0.0 lineage, first choose a newer version and regenerate both manifests.
 
-Use Python 3.9 or later and a virtual environment outside this repository:
+## Build in GitHub
+
+The [OpenAI package workflow](../.github/workflows/openai-package.yml) validates the package, builds it twice, compares the ZIP bytes, and uploads the ZIP, SHA-256 and readiness report as one artifact. A separate job reads public OAuth discovery without signing in or sending AI requests.
+
+Download the artifact for the exact reviewed commit. Only `abbelo-openai-candidate.zip` goes to the OpenAI plugin portal. A green package build does **not** mean authentication works, acceptance passed, or the plugin is approved.
+
+The release guard refuses a submission-ready result while evidence is missing. Existing historical receipts are preserved in `review/verification.json`; the latest handoff is [launch status](review/launch-status-2026-10-11.md).
+
+For an independent rebuild with Python 3.9 or newer:
 
 ```sh
-python3 -m venv /tmp/abbelo-plugin-validation
-/tmp/abbelo-plugin-validation/bin/pip install -r openai/requirements.txt
-/tmp/abbelo-plugin-validation/bin/python scripts/build-openai.py --output /tmp/abbelo-openai-candidate.zip
-/tmp/abbelo-plugin-validation/bin/python scripts/build-openai.py --require-submission-ready
+python -m pip install -r openai/requirements.txt
+python scripts/build-openai.py --output /tmp/abbelo-openai-candidate.zip
+python scripts/build-openai.py --require-submission-ready
 ```
 
-The final command intentionally fails until every release gate has real evidence. It does not submit anything. Default validation proves local schema, listing limits, image dimensions, tool names, case counts, included-file allowlist, compatibility consistency, absence of credential/config placeholders, and archive integrity. It does not replace the portal’s automated scans or live host tests. Repeated builds with the same files produce identical ZIP bytes.
+The last command must fail until every recorded gate has evidence. It never submits anything.
 
-Vendored schemas are exact public Agent Plugins 1.0.0 schema files downloaded on September 30, 2026 from the `$id` in each file. Schema provenance and OpenAI requirements are in [requirements](review/requirements.md).
+## Remaining launch work
 
-## Required next steps
+1. Match the installed plugin to the intended existing public draft and finish its OAuth connection. See [OAuth](review/oauth.md) and the latest launch status.
+2. Run [acceptance](review/acceptance.md) with a dedicated reviewer account, including read/write separation, saved-session continuity, exact retries and revocation.
+3. Review the existing recording before deciding whether it needs replacing; add the verified accessible demo URL.
+4. Complete the actual portal scans, supported countries, commerce facts and required publisher declarations.
+5. Submit the completed package for OpenAI review, then publish after approval. The owner's request to finish and go live authorizes this sequence; do not ask again for generic submission/publication permission. Missing factual declarations still require the owner's answers.
 
-1. Confirm the legal publisher, country, availability, support/policies and existing-account payment model.
-2. Companion app PR #992 is approved, merged and deployed. Production smoke checks pass and OpenAI domain verification is complete. Resolve the portal’s remaining **Authorization unavailable** state; MCP discovery has not succeeded.
-3. Follow [OAuth setup](review/oauth.md). Capture the exact callback from the portal and obtain approval before registering an OpenAI client. Preserve existing clients, scopes and revocation rules.
-4. Obtain a synthetic reviewer account and an explicit paid-test budget. Run [acceptance](review/acceptance.md), including the packaged review cases, in actual ChatGPT and a dot.
-5. Record [the demo](review/demo.md); add the reviewed accessible URL to the manifest.
-6. Complete portal checks and obtain approval for the required legal declarations. The owner has already requested submission. Approval by OpenAI is a separate event. Publication needs another owner decision.
+Schema provenance is in [requirements](review/requirements.md). This package does not change production authentication, existing provider clients or billing.
