@@ -66,6 +66,13 @@ Remote sandbox verification at 2026-10-15T15:11:29Z:
 | Live refresh, revocation, account isolation, entitlements and charging | Not tested |
 
 [Public endpoint receipt](preflight-2026-10-15.json).
+
+All eight existing MCP backend check scripts passed against application commit
+`2ab9b95f089ce06cbb0b5a25e05e74a61aa96ec0` in a remote sandbox. They cover protocol,
+authority, consent UI and routes, provider adaptation and lifecycle, privacy,
+and service admission. See the [backend check receipt](backend-checks-2026-10-15.json)
+for exact commands, output and limitations. These fixture-based checks do not
+replace the pending Grok Bot acceptance tests.
 No member data was read or AI session run. These checks do not establish
 marketplace readiness.
 
