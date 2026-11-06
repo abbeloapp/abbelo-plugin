@@ -1,7 +1,7 @@
 {
   "name": "abbelo",
-  "version": "0.1.0",
-  "description": "Connect to your personal work in Abbelo. Find Guides, continue conversations, and practice skills and habits. Limited integration preview.",
+  "version": "0.2.0",
+  "description": "Use existing Abbelo Goals, read authorized Library Guides, and save requested Goal notes from your AI app. Limited integration preview.",
   "author": {
     "name": "Abbelo",
     "email": "support@abbelo.com"
