@@ -1,0 +1,64 @@
+{
+  "checked_at_utc": "2026-10-15T15:24:59.975Z",
+  "app_source_commit": "2ab9b95f089ce06cbb0b5a25e05e74a61aa96ec0",
+  "environment": "Remote Vercel Sandbox, Node.js 22. Source files and tests fetched from the pinned GitHub commit.",
+  "dependency_versions": {
+    "mcp_server": "2.0.0",
+    "mcp_client": "2.0.0",
+    "jose": "6.1.3",
+    "zod": "4.3.6",
+    "react": "19.2.8",
+    "react_dom": "19.2.8",
+    "jsdom": "26.1.0"
+  },
+  "execution": "All eight existing scripts from npm run check:mcp were run individually.",
+  "suites": [
+    {
+      "script": "scripts/check-mcp-boundary.mjs",
+      "exit_code": 0,
+      "output": "SDK client passed: 2025-11-25\nSDK client passed: 2026-07-28\nMCP boundary passed: signed token validation, grant revocation, scope checks, refresh-stable identity, bounded input/output, SDK discovery/tool calls, schema isolation, passive queued projection, and safe errors."
+    },
+    {
+      "script": "scripts/check-mcp-authority.mjs",
+      "exit_code": 0,
+      "output": "MCP authority profile passed: cryptographic/profile checks precede grant resolution, exact staging audience, mandatory consent binding, strict resource scopes with filtered OAuth scopes, fresh revocation, refresh-stable identity and legacy-store fallback. Provider-issued token profile remains unverified."
+    },
+    {
+      "script": "scripts/check-mcp-workos.mjs",
+      "exit_code": 0,
+      "output": "WorkOS adapter passed offline fixtures: minimal completion payload, exact identity mapping, client projection, fixed API host, redirect rejection, bounded bodies/deadlines and safe errors. Live token scopes, consent, refresh and revocation remain unverified."
+    },
+    {
+      "script": "scripts/check-mcp-consent.mjs",
+      "exit_code": 0,
+      "output": "MCP consent/store VM passed: verified member and consent scope intersection, signed client scope ceiling, origin/body/deadline refusal, pending-only completion, failed-flow revocation, provider PKCE/client metadata before activation, read-only refresh binding, and deletion/revocation failclosed. Provider-issued tokens and database locking remain separate verification gates."
+    },
+    {
+      "script": "scripts/check-mcp-consent-react.mjs",
+      "exit_code": 0,
+      "output": "MCP connection handoff React checks passed: explicit read/session consent, no automatic grants, Strict Mode duplicate prevention, auth ordering/recovery, owner/transaction cancellation, bounded failures without retries, and safe redirects."
+    },
+    {
+      "script": "scripts/check-mcp-telemetry.mjs",
+      "exit_code": 0,
+      "output": "MCP telemetry checks passed: private paths, transactions, encoded redirects, Home work, replay block, and preserved account/public diagnostics."
+    },
+    {
+      "script": "scripts/check-mcp-services.mjs",
+      "exit_code": 0,
+      "output": "MCP services/admission passed: passive reads, saved Goal/Guide context, grant and provenance propagation, refresh-safe exact retry, terminal scheduling, context-race denial, safe error mapping, verified readback and scope/owner boundaries. Database atomicity, live provider auth and metered Runtime execution are separate proofs."
+    },
+    {
+      "script": "scripts/check-mcp-provider-lifecycle.mjs",
+      "exit_code": 0,
+      "output": "MCP provider lifecycle VM passed: no-identity bypass, exact owner/issuer/lease binding, unresolved setup refusal, bounded failures, durable acknowledgment and cleanup retry. Real provider deletion remains a staging acceptance gate."
+    }
+  ],
+  "live_grok_bot_connection": "not established",
+  "live_session_and_credit_charging": "not tested",
+  "limitations": [
+    "Provider, database, and inference boundaries use controlled fixtures. These checks do not prove live OAuth token issuance, SQL locking, Guide entitlements or metered Runtime execution.",
+    "No member data was accessed, no paid Session was run, and no production authentication settings were changed.",
+    "Grok Bot installation, connection, saved-result retrieval, refresh, revocation, cross-account denial, entitlements and duplicate-charge prevention still require in-app acceptance evidence."
+  ]
+}

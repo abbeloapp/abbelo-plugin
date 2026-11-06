@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-10-15T15:11:29.859Z",
+  "checks": [
+    {
+      "name": "resource-metadata",
+      "url": "https://abbelo.com/.well-known/oauth-protected-resource/mcp",
+      "status": 200,
+      "challenge": null
+    },
+    {
+      "name": "issuer-metadata",
+      "url": "https://satisfying-gust-31.authkit.app/.well-known/oauth-authorization-server",
+      "status": 200,
+      "challenge": null
+    },
+    {
+      "name": "unauthenticated-init",
+      "url": "https://abbelo.com/mcp",
+      "status": 401,
+      "challenge": "Bearer resource_metadata=\"https://abbelo.com/.well-known/oauth-protected-resource/mcp\", error=\"invalid_token\", error_description=\"Connect your Abbelo account again.\""
+    },
+    {
+      "name": "public-page",
+      "url": "https://abbelo.com/terms",
+      "status": 200,
+      "challenge": null
+    },
+    {
+      "name": "public-page",
+      "url": "https://abbelo.com/privacy",
+      "status": 200,
+      "challenge": null
+    },
+    {
+      "name": "public-page",
+      "url": "https://abbelo.com/support",
+      "status": 200,
+      "challenge": null
+    },
+    {
+      "name": "public-page",
+      "url": "https://abbelo.com/developers/mcp",
+      "status": 200,
+      "challenge": null
+    }
+  ],
+  "packageCommit": "dfc1efe5dda857e6e62cba0eb4dc3bcce8f26d9e",
+  "packageChecks": {
+    "json": true,
+    "clientIdVariable": true,
+    "skillFrontmatter": true,
+    "license": "MIT",
+    "logo": {
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG",
+      "channels": 3,
+      "cornerPixels": "white"
+    }
+  },
+  "authenticatedGrokBotTest": "not_performed",
+  "submission": "not_submitted"
+}
