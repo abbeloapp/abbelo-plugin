@@ -4,7 +4,7 @@ Use your existing Abbelo Goals and Library Guides from an AI app. The host condu
 
 ## Integration preview
 
-This package targets MCP contract 2.0.0 at [Abbelo’s MCP endpoint](https://abbelo.com/mcp). A running endpoint or installed package does not establish a working host connection or marketplace approval. Verify OAuth consent, tool discovery, refresh and disconnect in the intended host using an isolated test account. Dots, Muse, Grok Bot and OpenAI compatibility must each be proven before advertising support.
+This package targets MCP contract 2.1.0 at [Abbelo’s MCP endpoint](https://abbelo.com/mcp). A running endpoint or installed package does not establish a working host connection or marketplace approval. Verify OAuth consent, tool discovery, refresh and disconnect in the intended host using an isolated test account. Dots, Muse, Grok Bot and OpenAI compatibility must each be proven before advertising support.
 
 ## Setup
 
@@ -24,6 +24,7 @@ Check `abbelo_get_connection` after connecting. Optional **Save to Goals** conse
 | `abbelo_get_goal_notes` | Read attributed notes from connected apps. |
 | `abbelo_save_goal_note` | Save a requested report or summary to existing Goals work. |
 | `abbelo_get_conversation` | Read the exact saved conversation requested. |
+| `abbelo_open_session` | Get the native player link for an authorized saved conversation. |
 | `abbelo_get_run` | Read a historical recorded result without executing AI. |
 
 Use `goal`, `guide` or `conversation` for discovery. `growth` and `program` are compatibility aliases. The first-party product is currently called Goals.
@@ -33,6 +34,8 @@ Examples: “Open my leadership goal and help me with the current step.” “Fi
 ## Permissions and limitations
 
 `abbelo:read` grants account-wide personal access, subject to current ownership and Guide entitlement. Optional `abbelo:write` with fresh `goals-guides-v2` consent allows attributed notes. It does not authorize a teammate’s private data. Notes distinguish a client-reported member statement from an agent summary and never claim verified speech, completed practice or achievement.
+
+For live voice, `abbelo_open_session` returns a link to the exact saved conversation in Abbelo. The member signs in and starts voice there; opening the link does not start audio or spend credits. The voice player does not run inside the host.
 
 The tools do not create Goals, prepare or advance courses, publish Guides, buy content, generate voice or change billing. The retired `abbelo_start_conversation` and `abbelo_continue_session` tools must not be used. Open Abbelo for unsupported actions.
 

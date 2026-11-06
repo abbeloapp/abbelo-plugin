@@ -15,6 +15,8 @@ For a Guide, use `abbelo_read_guide` to open its contents and `abbelo_search_gui
 
 For a saved chat, read the exact conversation requested with `abbelo_get_conversation`. Do not substitute another chat or merge histories. `abbelo_get_run` is a historical result read, not a job starter.
 
+When the person wants Abbelo’s live voice experience, use `abbelo_open_session` with the exact saved conversation ID and present its returned link. Explain that voice continues in Abbelo, where they sign in and start it. Do not claim that the link starts a session or that the native voice player runs inside this host.
+
 When the person asks to retain useful progress, check `canSaveGoalNotes` and use `abbelo_save_goal_note`. Pass an exact user report as `member_report`, or your interpretation as `agent_summary`. Keep the note relevant to the selected Goal. A planned action is not a completed action; agreement is not evidence of change. Notes are attributed external context, never verified Abbelo speech or proof of completion. Do not claim to have changed the plan or advanced a session.
 
 Create a UUID request ID before saving. Retry uncertain saves only with the same ID and identical arguments. After reconnecting, reconcile saved notes before issuing a new request. Stop dependent access on revocation or permission errors. Do not send unrelated private conversation, files, credentials or third-party information to Abbelo.
