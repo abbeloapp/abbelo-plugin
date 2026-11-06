@@ -1,7 +1,7 @@
 {
   "name": "abbelo",
-  "version": "0.3.0",
-  "description": "Use existing Abbelo Goals, read authorized Library Guides, and save requested Goal notes from your AI app. Limited integration preview.",
+  "version": "0.4.0",
+  "description": "Explore Library Guides, create and manage Studio Guides, and continue existing Abbelo Goals work from a connected AI app. Integration preview.",
   "author": {
     "name": "Abbelo",
     "email": "support@abbelo.com"
