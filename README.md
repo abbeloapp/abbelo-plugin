@@ -1,69 +1,49 @@
 # Abbelo
 
-Bring your personal work in Abbelo into your conversations. Find accessible Guides, continue saved conversations, and work on skills and habits with Abbelo.
+Use your existing Abbelo Goals and Library Guides from an AI app. The host conducts the conversation; Abbelo supplies authorized data and saves requested notes.
 
-## Preview status
+## Integration preview
 
-This is a plugin package for integration review. Abbelo's production MCP endpoint is in controlled verification. General client registration is not open, and end-to-end compatibility with Grok Bot has not yet been verified. This repository is not an approved marketplace listing or a claim of public availability.
+This package targets MCP contract 2.0.0 at [Abbelo’s MCP endpoint](https://abbelo.com/mcp). A running endpoint or installed package does not establish a working host connection or marketplace approval. Verify OAuth consent, tool discovery, refresh and disconnect in the intended host using an isolated test account. Dots, Muse, Grok Bot and OpenAI compatibility must each be proven before advertising support.
 
-The endpoint and OAuth discovery are live. Connecting requires a public PKCE client registered by Abbelo, a verified Abbelo account, and the member's explicit consent. Contact support@abbelo.com for preview coordination. Do not substitute an unrelated OAuth client, API key, or another person's token.
+## Setup
 
-## Setup for a registered preview
+Use the host’s supported OAuth flow and [Abbelo’s protected-resource metadata](https://abbelo.com/.well-known/oauth-protected-resource/mcp). For this Cursor-format package, configure `ABBELO_CLIENT_ID` with the public PKCE client registered for the host and its exact callbacks. Verify variable resolution in that host; this is not a universal setup format. Do not substitute another app’s client or ask a member to paste keys or tokens into chat.
 
-1. Coordinate the host's exact OAuth callback URLs and client registration with Abbelo. Cursor documents separate web/agent and desktop callbacks; verify the actual Grok Bot callback before registering it.
-2. Configure the required `ABBELO_CLIENT_ID` plugin variable with the registered public client ID. The package uses Cursor's plugin-variable mechanism in `mcp.json`; its resolution and OAuth flow must be tested in Grok Bot before release.
-3. Install the plugin for testing using the host's supported plugin flow, then authenticate through Abbelo's consent screen. No client secret or member access token belongs in this repository or in chat.
-4. Verify `abbelo_get_connection` before reading or submitting personal work.
+Check `abbelo_get_connection` after connecting. Optional **Save to Goals** consent permits the note tool; older grants must reconnect to receive that permission.
 
-The connection uses Streamable HTTP at `https://abbelo.com/mcp`. Discover OAuth metadata from `https://abbelo.com/.well-known/oauth-protected-resource/mcp`.
-
-## What it provides
+## Tools
 
 | Tool | Purpose |
 | --- | --- |
-| `abbelo_get_connection` | Check the current connection and permissions. |
-| `abbelo_find_work` | Find accessible conversations, Goals, or Guides. |
-| `abbelo_start_conversation` | Create a saved conversation, optionally with a Goal or Guide. |
-| `abbelo_continue_session` | Send a message for Abbelo to work on. This can use Abbelo credits and update saved personal work. |
-| `abbelo_get_run` | Read the status and completed reply for a submitted message. |
-| `abbelo_get_conversation` | Read permitted saved conversation history. |
+| `abbelo_get_connection` | Check effective permissions and note-write capability. |
+| `abbelo_find_work` | Find Goals, accessible Library Guides, or saved conversations. |
+| `abbelo_get_goal` | Read the current plan, course overview, next step and session focus. |
+| `abbelo_read_guide` | Browse contents and read exact authorized passages. |
+| `abbelo_search_guide` | Find passages within a Guide’s entitled edition. |
+| `abbelo_get_goal_notes` | Read attributed notes from connected apps. |
+| `abbelo_save_goal_note` | Save a requested report or summary to existing Goals work. |
+| `abbelo_get_conversation` | Read the exact saved conversation requested. |
+| `abbelo_get_run` | Read a historical recorded result without executing AI. |
 
-Guide identifiers use the API's compatibility field `programId` and search kind `program`. They are shown to users as Guides.
+Use `goal`, `guide` or `conversation` for discovery. `growth` and `program` are compatibility aliases. The first-party product is currently called Goals.
 
-Example requests after successful connection:
+Examples: “Open my leadership goal and help me with the current step.” “Find what this Guide says about delegation.” “Save what I just told you as a note on this goal.”
 
-- Find a Guide I can use to practice clear communication.
-- Continue my Abbelo conversation about building a reading habit.
-- Start an Abbelo session to help me prepare for a difficult conversation.
+## Permissions and limitations
 
-## Permissions, data, and credits
+`abbelo:read` grants account-wide personal access, subject to current ownership and Guide entitlement. Optional `abbelo:write` with fresh `goals-guides-v2` consent allows attributed notes. It does not authorize a teammate’s private data. Notes distinguish a client-reported member statement from an agent summary and never claim verified speech, completed practice or achievement.
 
-`abbelo:read` permits reading the connection, accessible work summaries, saved conversation history, and results. `abbelo:write` permits creating conversations and submitting sessions that can consume Abbelo credits and save changes. A selected Goal or Guide does not narrow the account-wide personal-work permission.
+The tools do not create Goals, prepare or advance courses, publish Guides, buy content, generate voice or change billing. The retired `abbelo_start_conversation` and `abbelo_continue_session` tools must not be used. Open Abbelo for unsupported actions.
 
-The plugin exposes no purchases, account administration, raw Guide files, or bulk exports. It contains no local executable, analytics, shell hooks, or credential store. The host and Abbelo process authorized requests under their respective policies.
+Current tools call no Abbelo generation provider and spend no Abbelo AI credits. Host model usage follows that host’s subscription and terms; Abbelo voice and Metis preparation are separate. Never imply one subscription pays for every service.
 
-Only `abbelo_continue_session` submits AI work. Finding work, creating a conversation, polling, and reading history do not use AI credits. A failed session may still have incurred provider costs. Keep the same request ID and exact arguments when retrying an uncertain write.
+Use the same UUID and identical arguments to retry a note save. After reconnecting, read notes and reconcile an uncertain save before starting another. Disconnect in Abbelo Settings to revoke access; uninstalling a plugin alone does not revoke a grant. External apps may retain already delivered data under their own policies.
 
-Removing a plugin or closing a transport session is not the same as revoking its Abbelo grant. Contact support@abbelo.com for connection and account help during the preview.
+The package has no local executable, analytics, shell hooks or credential store. Follow the [current contract](https://abbelo.com/developers/mcp) and [host skill](skills/abbelo/SKILL.md).
 
-## Verification required before release
-
-- Register the intended host's exact redirect URLs and configure its public client ID.
-- Verify plugin-variable resolution, consent, OAuth scopes, and authenticated tool discovery in Grok Bot.
-- Verify a permitted read and a separately authorized write, saved reply, retry behavior, and credit accounting using an isolated test account.
-- Verify revocation and rejection of unauthorized access.
-- Complete marketplace review. Do not advertise approval before it is granted.
-
-## Links
-
-- [Abbelo](https://abbelo.com)
-- [MCP contract](https://abbelo.com/developers/mcp)
-- [Privacy](https://abbelo.com/privacy)
-- [Terms](https://abbelo.com/terms)
-- [Usage policies](https://abbelo.com/usage-policies)
-- [Cursor plugin submission requirements](https://cursor.com/docs/reference/plugins#submitting-a-plugin)
-- [Cursor static OAuth configuration](https://cursor.com/docs/mcp#static-oauth-for-remote-servers)
+[Privacy](https://abbelo.com/privacy) · [Terms](https://abbelo.com/terms) · [Usage policies](https://abbelo.com/usage-policies)
 
 ## License
 
-The plugin configuration, documentation, and skill are MIT licensed. Abbelo's name and logo remain Abbelo branding; the license does not grant trademark rights or permission to imply endorsement. The plugin license does not license Guide content, member data, or Abbelo's hosted service.
+The plugin configuration, documentation and skill are MIT licensed. Abbelo branding remains Abbelo’s; this license does not grant trademark rights or license Guide content, member data or the hosted service.
