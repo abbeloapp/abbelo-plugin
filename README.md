@@ -46,6 +46,8 @@ For YouTube imports, retain the import ID, poll its saved status and finish when
 
 `abbelo:read` grants account-wide personal access, subject to current ownership and Guide entitlement. Current `studio-guides-v3` consent includes Studio reads; optional `abbelo:write` permits Guide changes and attributed notes. Version 2 grants can still save notes but cannot use Studio. It does not authorize a teammate’s private data. Notes distinguish a client-reported member statement from an agent summary and never claim verified speech, completed practice or achievement.
 
+For live voice, `abbelo_open_session` returns a link to the exact saved conversation in Abbelo. The member signs in and starts voice there; opening the link does not start audio or spend credits. The voice player does not run inside the host.
+
 The tools do not create Goals, prepare or advance courses, buy content, generate voice inside the host or change billing. The retired `abbelo_start_conversation` and `abbelo_continue_session` tools must not be used. Open Abbelo for unsupported actions.
 
 Library reads and notes spend no Abbelo AI credits. Studio preparation uses Abbelo’s existing providers and admission rules; this release adds no member credit charge. Host model usage follows that host’s terms. Abbelo voice and Metis preparation are separate; never imply one subscription pays for every service. Disclose any future Abbelo charge before starting the work.
